@@ -20,14 +20,13 @@
 .nav-links {
   display: flex;
   list-style: none;
-}
-
-.nav-links li {
   margin: 0 15px;
   cursor: pointer;
+  color: #121212;
 }
 
-.nav-links li:hover {
+
+.nav-links :hover {
   text-decoration: underline;
 }
 
