@@ -1,4 +1,22 @@
 /*Default CSS*/
+@font-face {
+  font-family: Inter;
+  src: url('../src/assets/fonts/Inter-Regular.ttf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Inter-Light;
+  src: url('../src/assets/fonts/Inter-Light.ttf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Inter-Bold;
+  src: url('../src/assets/fonts/Inter-SemiBold.ttf');
+  font-weight: 400;
+}
+
 * {
     margin : 0;
     padding: 0;
@@ -16,6 +34,7 @@
     position: relative;
     background-color: #fff !important;
     color: #121212 !important;
+    font-family: 'Inter' !important;
 
   }
   
@@ -23,6 +42,7 @@
     margin: 0;
     padding: 0;
     line-height: normal;
+    font-family: 'Inter-Bold' !important;
   }
   
   p, a, li, button, ul {
@@ -30,6 +50,7 @@
     padding: 0;
     line-height: normal;
     text-decoration: none;
+    font-family: 'Inter-Light' !important;
   }
   
   a:hover {

@@ -1,13 +1,12 @@
 import React from 'react'
-import { Navbar , Container , Nav } from "react-bootstrap";
 import robot from '../../assets/icons/robot.png';
 import bell from '../../assets/icons/bell.png';
 import messages from '../../assets/icons/speech-bubble.png';
 import user from '../../assets/icons/user.png';
-import { useEffect, useState } from "react";
 import '../Navbar/navbar.css';
 import logo from '../../assets/icons/mortarboard.png';
 import search from '../../assets/icons/search.png';
+import { Link } from 'react-router-dom';
 
 const navbar = () => {
 
@@ -16,11 +15,10 @@ const navbar = () => {
     <span className='right-navbar'>
     <img src={logo} alt="" className='logo'></img>
    
-   <ul className='nav-links'>
-     <li>Home</li>
-     <li>Dashboard</li>
-     <li>My Courses</li>
-   </ul>
+   
+    <Link to="/home" className='nav-links'>Home</Link>
+     <Link to="/dashboard" className='nav-links'>Dashboard</Link>
+     <Link to="/mycourses" className='nav-links'>My Courses</Link>
    
     </span>
    

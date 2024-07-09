@@ -1,13 +1,13 @@
 import React from 'react'
-import Navbar from './Navbar/navbar';
-import { Nav } from 'react-bootstrap';
+import Navbar from '../Navbar/navbar';
+
 
 const dashboard = () => {
   return (
     <>
     <Navbar></Navbar>
     <div>
-      
+    Dashboard
     </div>
     </>
   )
