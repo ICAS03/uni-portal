@@ -2,6 +2,8 @@ import React from 'react'
 import Navbar from '../Navbar/navbar';
 import ModuleCard from '../Modules/moduleCard';
 import '../MyCourses/mycourses.css';
+import WeeklyAnalysis from '../Modules/weeklyAnalysis';
+import AnalysisCard from '../Modules/analysisCard';
 
 const mycourses = () => {
   return (
@@ -24,6 +26,9 @@ const mycourses = () => {
      <ModuleCard></ModuleCard>
      <ModuleCard></ModuleCard>
       </div>
+      <AnalysisCard title="Weekly Performance Analysis">
+        <WeeklyAnalysis />
+      </AnalysisCard>
     </div>
     </>
   )
