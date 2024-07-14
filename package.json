@@ -12,6 +12,7 @@
   "dependencies": {
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.4",
+    "react-circular-progressbar": "^2.1.0",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.24.0"
   },
