@@ -18,7 +18,6 @@ const navbar = () => {
     <Link to="/tutorial" className='nav-links'>Home</Link>
      <Link to="/dashboard" className='nav-links'>Dashboard</Link>
      <Link to="/mycourses" className='nav-links'>My Courses</Link>
-   
     </span>
    
     <span className='left-navbar'>
@@ -33,7 +32,6 @@ const navbar = () => {
       <img src={user} alt="" className=''></img>
     </div>
     </span>
-  
   </div>
   )
 }
