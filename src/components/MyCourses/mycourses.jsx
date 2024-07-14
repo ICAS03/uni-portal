@@ -3,7 +3,6 @@ import Navbar from '../Navbar/navbar';
 import ModuleCard from '../Modules/moduleCard';
 import '../MyCourses/mycourses.css';
 
-
 const mycourses = () => {
   return (
     <>

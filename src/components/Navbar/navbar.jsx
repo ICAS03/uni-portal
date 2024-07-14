@@ -15,11 +15,9 @@ const navbar = () => {
     <span className='right-navbar'>
     <img src={logo} alt="" className='logo'></img>
    
-   
-    <Link to="/home" className='nav-links'>Home</Link>
+    <Link to="/tutorial" className='nav-links'>Home</Link>
      <Link to="/dashboard" className='nav-links'>Dashboard</Link>
      <Link to="/mycourses" className='nav-links'>My Courses</Link>
-   
     </span>
    
     <span className='left-navbar'>
@@ -34,7 +32,6 @@ const navbar = () => {
       <img src={user} alt="" className=''></img>
     </div>
     </span>
-  
   </div>
   )
 }

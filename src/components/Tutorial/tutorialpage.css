@@ -1,0 +1,50 @@
+.tutorial-body {
+  display: flex; 
+  padding: 16px;
+}
+
+.tutorial-content {
+  flex: 3; 
+  padding-right: 16px; 
+}
+
+.question-checks {
+  flex: 1; 
+  padding: 16px; 
+  background-color: #f9f9f9; 
+  border: 1px solid #ddd; 
+  border-radius: 8px; 
+}
+
+.tutorial-title {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  justify-content: space-between;
+}
+
+.tutorial-instruction {
+  display: flex;
+  align-items: center;
+  color: #E46F6F;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.tutorial-navigation {
+  display: flex;
+  justify-content: space-between; 
+  padding: 16px;
+}
+
+.previous, .next {
+  cursor: pointer; 
+  color: #121212; 
+  text-decoration: none; 
+  font-weight: bold; 
+}
+
+.previous:hover, .next:hover {
+  text-decoration: underline; 
+}
