@@ -12,9 +12,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<ModuleStat></ModuleStat>}></Route>
+        <Route path='/' element={<Dashboard/>}></Route>
         <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
         <Route path='/mycourses' element={<MyCourses></MyCourses>}></Route>
+        <Route path='/modulestat' element={<ModuleStat/>}></Route>
       </Routes>
     </Router>
   )
