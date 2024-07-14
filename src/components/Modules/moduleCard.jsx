@@ -9,8 +9,8 @@ const moduleCard = () => {
   return (
     <div className="card">
     <div className="card-body">
-      <h3 className="card-title">Software Engineering</h3>
-      <h5 className="card-subtitle mb-2 text-body-secondary">Bachelor's Degree</h5>
+      <h2 className="card-title">Software Engineering</h2>
+      <h4 className="card-subtitle mb-2 text-body-secondary">Bachelor's Degree</h4>
       <div className='card-content'>
       <span className='card-description'>
 

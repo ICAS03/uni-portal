@@ -1,0 +1,60 @@
+.main-div {
+    margin: 16px;
+    height: 100vh;
+    width: 100vh;
+}
+
+.course-menu {
+    margin: 16px;
+    padding: 16px;
+    /* background-color: #f39898; */
+    display: flex;
+    width: 35%;
+    height: fit-content;
+    flex-flow: column nowrap;
+    gap: 16px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.content-div{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.right-content-div{
+    display: flex;
+    width: 50%;
+    flex-direction: row;
+    margin: 16px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.course-title{
+    width: 100%;
+}
+
+.course-selection-span {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 10px;
+    border-bottom: 1px solid #ddd;
+    justify-content: space-between;
+  }
+  
+.selection-list {
+    display: flex;
+    flex-flow: row nowrap;
+    list-style: none;
+    margin: 0 15px;
+    cursor: pointer;
+    color: #121212; 
+    gap: 25px; 
+}
+
+.selection-list :hover{
+   text-decoration: underline;
+   color : #E46F6F;
+}

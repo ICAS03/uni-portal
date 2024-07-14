@@ -5,16 +5,19 @@ import './App.css'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Dashboard from './components/Dashboard/dashboard'
 import MyCourses from './components/MyCourses/mycourses'
+import CourseMenu from './components/CourseMenu/courseMenu'
 
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
-        <Route path='/mycourses' element={<MyCourses></MyCourses>}></Route>
-      </Routes>
-    </Router>
+      <Router>
+        <Routes>
+          <Route path="/" element={<CourseMenu/>} />
+          <Route path='/dashboard' element={<Dashboard/>}></Route>
+          <Route path='/mycourses' element={<MyCourses/>}></Route>
+          <Route path='/coursemenu' element={<CourseMenu/>}></Route>
+        </Routes>
+      </Router>
   )
 }
 

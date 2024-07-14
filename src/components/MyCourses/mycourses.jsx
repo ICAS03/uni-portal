@@ -20,10 +20,16 @@ const mycourses = () => {
       </ul>
      </span> 
       </div>
-      <div className='modules'>
-      <ModuleCard></ModuleCard>
-     <ModuleCard></ModuleCard>
-     <ModuleCard></ModuleCard>
+      <div className='content'>
+        <div className='modules'>
+          <ModuleCard></ModuleCard>
+          <ModuleCard></ModuleCard>
+          <ModuleCard></ModuleCard>
+        </div>
+        
+        <div className='visuals'>
+          <h2>Course Visuals</h2>
+        </div>
       </div>
     </div>
     </>
