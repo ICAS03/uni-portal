@@ -1,0 +1,22 @@
+.analysis-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(230, 228, 228, 0.1);
+    margin: 20px;
+    padding: 20px;
+    width: 96%;
+    box-sizing: border-box;
+    flex-grow: 1;
+  }
+  
+  .analysis-card-header {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .analysis-card-body {
+    padding: 10px;
+  }
+  
