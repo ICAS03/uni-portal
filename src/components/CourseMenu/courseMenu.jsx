@@ -14,16 +14,20 @@ const CourseMenu = () => {
                 <CourseMenuItem/>
                 <CourseMenuItem/>
                 <CourseMenuItem/>
+                <CourseMenuItem/>
+                <CourseMenuItem/>
             </div>
-            <div className="right-content-div">
-                <h2 className='course-title'>Software Engineering</h2>
-                <ul className='selection-list'>
-                    <li>Modules</li>
-                    <li>Assignments</li>
-                </ul>
-                <CourseMenuContent/>
+            <div className='right-whole-div'>
+                <h1 className='course-title'>Software Engineering</h1>
+                    <ul className='selection-list'>
+                        <li>Modules</li>
+                        <li>Assignments</li>
+                    </ul>
+                <div className="right-content-div">
+                    <CourseMenuContent/>
+                </div>
             </div>
-            {/* <div>For AI bot</div> */}
+            <div className='ai-div'>For AI bot</div>
         </div>
         </>
   )
