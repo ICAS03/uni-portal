@@ -1,0 +1,37 @@
+.alert-card{
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px hsla(0, 0%, 0%, 0.1);
+    padding: 20px;
+    margin: 15px;
+    
+    display: inline-block;
+    flex-wrap: wrap;
+    
+   
+    
+    width: 826px;
+    height: 159px;
+  
+  }
+  h2.alert-card-title{
+    min-width: 247px;
+    margin: 0px;
+    height: 28px;
+    
+  }
+  p.alert-card-description{
+    
+    font-size: 16px;
+    color: gray;
+    margin-bottom: auto;
+    
+  }
+  p.alert-card-message{
+    
+    font-size: 20px;
+    color: black;
+    margin-bottom: auto;
+    margin-top: 30px;
+    
+  }
