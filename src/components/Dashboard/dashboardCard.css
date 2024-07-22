@@ -1,0 +1,89 @@
+.dashboard-card{
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px hsla(0, 0%, 0%, 0.1);
+    padding: 9px;
+    margin: 15px;
+    
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 332px;
+    height: 156px;
+    margin-left: 20px;
+  }
+  /*.card + .card {
+    margin-left: 0px;
+  }*/
+  
+  h1{
+    font-size: 2.3em;
+    background-color: hsl(0, 0%, 100%);
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px;
+  }
+  
+  h2.card-title{
+    min-width: 247px;
+    margin: 0px;
+    height: 28px;
+    font-size: 23px;
+  }
+
+  img.dashboard-card-button{
+    height: 34px;
+    width: 34px;
+    margin-left: 30px;
+    cursor:pointer;
+  }
+
+  p.dashboard-card-description{
+    
+    font-size: 16px;
+    color: gray;
+    margin-bottom: auto;
+    
+  }
+  .dashboard-card-progbar{
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+    height: 8px;
+    background-color: rgb(251, 251, 251);
+    overflow: hidden;
+    
+    
+  }
+  @keyframes animate {
+    0%{
+        transform: scaleX(0);
+    }
+    100%{
+        transform: scaleX(1);
+    }
+  }
+  span.dashboard-card-progress-line{
+    width: 75%;
+    height: 100%;
+    /*background-color: rgb(171, 220, 235);*/
+    position:absolute;
+    border-radius: 0px;
+    transform-origin: left;
+    transform: scaleX(0);
+    animation: animate 1s 1s cubic-bezier(1, 0, 0, 1) forwards;
+  
+  }
+
+  .blue {
+    background-color: #BBE1EF;
+  }
+  
+  .yellow {
+    background-color: #FCE50D;
+  }
+  
+  .purple {
+    background-color: #E2D5FE;
+  }
+  
