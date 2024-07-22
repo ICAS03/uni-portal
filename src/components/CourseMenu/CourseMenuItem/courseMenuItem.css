@@ -1,0 +1,13 @@
+p {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.title {
+    font-size: larger;
+    font-weight: inter-bold;
+    background-color: #BBE1EF;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: left;
+}

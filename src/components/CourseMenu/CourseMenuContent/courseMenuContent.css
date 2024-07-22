@@ -1,0 +1,11 @@
+.course-menu-content-body{
+    margin: 16px;
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+}
