@@ -21,9 +21,9 @@ const CourseMenu = () => {
                     <li>Modules</li>
                     <li>Assignments</li>
                 </ul>
+                <CourseMenuContent/>
             </div>
-            <CourseMenuContent/>
-            
+            {/* <div>For AI bot</div> */}
         </div>
         </>
   )

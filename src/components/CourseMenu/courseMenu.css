@@ -7,7 +7,6 @@
     padding: 16px;
     display: flex;
     width: 35%;
-    height: fit-content;
     flex-flow: column nowrap;
     gap: 16px;
     border-radius: 10px;

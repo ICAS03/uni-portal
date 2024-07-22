@@ -1,0 +1,23 @@
+.course-menu-content-body{
+    padding:16px;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+}
+
+.menu-title{
+    font-size: larger;
+    font-weight: inter-bold;
+    background-color: #BBE1EF;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: left;
+}
+
+.f-li{
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
