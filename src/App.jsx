@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard/dashboard'
 import MyCourses from './components/MyCourses/mycourses'
 import Tutorial from './components/Tutorial/tutorialpage'
 import ModuleStat from './components/moduleStatistic/moduleStat';
+import LecturerUploadTutorial from './components/LecturerUploadTutorial/LecturerUploadTutorial';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path='/mycourses' element={<MyCourses></MyCourses>}></Route>
         <Route path='/tutorial' element={<Tutorial></Tutorial>}></Route>
         <Route path='/modulestat' element={<ModuleStat/>}></Route>
+        <Route path='/lecturer-upload-tutorial' element={<LecturerUploadTutorial/>}></Route>
       </Routes>
     </Router>
   )
