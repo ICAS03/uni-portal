@@ -9,8 +9,8 @@ const moduleStat = () =>{
       <>
       <Navbar/>
       <h1 style={{marginLeft:'70px', marginTop:'30px'}}>Software Engineering</h1>
-      <div className='main-Cont'>
-      <div className="card-cont">
+      <div className='ModuleStatCardMain-Cont'>
+      <div className="ModuleStatCard-cont">
       <ModuleStatCard name = "Average Course Score" score = {50} color='#9CCC65'/>
       <ModuleStatCard name = "Average Score" score = {75} color='#F44336'/>
       <ModuleStatCard name = "Progress" score = {33} color='#AB47BC'/>

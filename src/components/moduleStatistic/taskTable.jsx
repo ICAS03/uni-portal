@@ -29,7 +29,7 @@ function TaskTable(){
                         <td>
                                 <div className='ProgbarTableCont1'>75
                                     <div className='ProgbarTableCont2'>  
-                                        <CircularProgressbar value={75} />
+                                        <CircularProgressbar className="ModuleStatTableCircle" value={75} />
                                     </div>
                                 </div>
                         </td>
@@ -49,7 +49,7 @@ function TaskTable(){
                         <td>
                             <div className='ProgbarTableCont1'>50
                                 <div className='ProgbarTableCont2'>  
-                                    <CircularProgressbar value={50} />
+                                    <CircularProgressbar className="ModuleStatTableCircle" value={50} />
                                 </div>
                             </div>
                         </td>
@@ -69,7 +69,7 @@ function TaskTable(){
                         <td>
                             <div className='ProgbarTableCont1'>25
                                 <div className='ProgbarTableCont2'>  
-                                    <CircularProgressbar value={25} />
+                                    <CircularProgressbar className="ModuleStatTableCircle" value={25} />
                                 </div>
                             </div>
                         </td>
@@ -89,7 +89,7 @@ function TaskTable(){
                         <td>
                             <div className='ProgbarTableCont1'>100
                                 <div className='ProgbarTableCont2'>  
-                                    <CircularProgressbar value={100}/>
+                                    <CircularProgressbar className="ModuleStatTableCircle" value={100}/>
                                 </div>
                             </div>
                         </td>
@@ -110,7 +110,7 @@ function TaskTable(){
                             <div className='ProgbarTableCont1'>
                                 <div>100</div>
                                 <div className='ProgbarTableCont2'>  
-                                    <CircularProgressbar value={100} />
+                                    <CircularProgressbar className="ModuleStatTableCircle" value={100} />
                                 </div>
                             </div>
                         </td>
