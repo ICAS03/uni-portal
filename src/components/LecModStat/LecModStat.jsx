@@ -3,12 +3,12 @@ import ModuleStatCard from '../moduleStatistic/moduleStatCard.jsx'
 import LecStatsTable from './LecStatsTable.jsx'
 import './lecModStat.css'
 import Navbar from '../Navbar/navbar';
-import LecModNav from '../LecNavBar/LecNavBar'
 
 const LecModStat = () =>{
     return (
       <>
       <Navbar/>
+      <h1>Software Engineering</h1>
       <nav className="sub-nav">
           <span className="nav-span">
             <ul className="nav-list">
@@ -36,7 +36,7 @@ const LecModStat = () =>{
         </div>
       </div>
       <div>
-        <h1 style={{textAlign:'center'}}>Statistics by task</h1>
+        <h1 style={{textAlign:'center', marginTop:-50}}>Statistics by task</h1>
         <LecStatsTable/>
       </div>
       </>
