@@ -1,0 +1,32 @@
+.project-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin: 20px;
+    padding: 10px;
+    width: 90%;
+    height: fit-content;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.project-pic{
+    flex: 1;
+    display: block;
+    margin: 20px;
+    width: 200px;
+    height: 200px;
+}
+
+.project-details{
+    flex: 6;
+    display: flex;
+    flex-direction: column;;
+    align-items: left;
+    padding-top: 10px;
+    justify-content: space-around;
+}
+
+p{
+    margin: 20px 30px; 
+}
