@@ -16,7 +16,6 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* <Route path='/' element={<CourseMenu/>}></Route> */}
         <Route path='/' element={<LecModStat/>}></Route>
         <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
         <Route path='/mycourses' element={<MyCourses></MyCourses>}></Route>
@@ -24,6 +23,7 @@ function App() {
         <Route path='/modulestat' element={<ModuleStat/>}></Route>
         <Route path='/lecturer-upload-tutorial' element={<LecturerUploadTutorial/>}></Route>
         <Route path='/coursemenu' element={<CourseMenu/>}></Route>
+        <Route path='/lecturestats' element={<LecModStat/>}></Route>
       </Routes>
     </Router>
   )

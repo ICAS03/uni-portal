@@ -1,16 +1,16 @@
 .TaskTable{
-    margin-top: 10px;
     border: 1px solid hsl(0, 0%, 80%);
     border-radius: 10px;
     box-shadow: 5px 5px 5px hsl(0, 0%, 0%, 0.1);
     text-align: left;
     font-family: Arial, san-serif;
-    border-collapse: separate; 
-    margin-bottom: 10vh;
+    /* border-collapse: separate;  */
+    margin-bottom: 20vh;
+    border-bottom: 1px solid grey; 
   }
   
   .TaskTable td ,th{
-    padding:15px 90px;
+    padding:15px 50px;
   }
   
   
@@ -23,19 +23,6 @@
      justify-content: center;
   }
   
-  .Submitted{
-    background-color: #d4f8d3;
-    border-radius: 10px;
-    padding:2px; 
-    text-align: center;
-  }
-  
-  .Unsubmitted{
-    background-color: #FFF0BB;
-    border-radius: 10px;
-    padding:3px; 
-    text-align: center;
-  }
   
   .ProgbarTableCont1{
     display:flex;
@@ -54,27 +41,6 @@
     margin-left: 10px;
   }
   
-  .SummaryText{
-    margin: 15px 0px;
-    text-align: center;
-  }
-  
-  .btn{
-    border:1px solid black;
-    padding:8px 15px;
-    border-radius: 5px;
-    color:White;
-    background-color: black;
-    font-weight: bold;
-    transition-duration:0.4s;
-    cursor:pointer;
-  }
-  
-  .btn:hover {
-    background-color: white;
-    color:black;
-  
-  }
 
   .ModuleStatTableCircle{
     height: 80%;

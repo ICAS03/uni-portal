@@ -3,12 +3,14 @@ import ModuleStatCard from '../moduleStatistic/moduleStatCard.jsx'
 import LecStatsTable from './LecStatsTable.jsx'
 import './lecModStat.css'
 import Navbar from '../Navbar/navbar';
+import LecModNav from '../LecNavBar/LecNavBar'
 
 const LecModStat = () =>{
     return (
       <>
       <Navbar/>
-      <h1 style={{marginLeft:'70px', marginTop:'30px'}}>Software Engineering</h1>
+      <LecModNav/>
+
       <div className='ModuleStatCardMain-Cont'>
         <div className="ModuleStatCard-cont">
             <ModuleStatCard name = "Average Completion Score" score = {50} color='#9CCC65'/>
@@ -17,8 +19,8 @@ const LecModStat = () =>{
             <ModuleStatCard name = "Bottom 20%" score = {15} color='#29B6F6'/>
         </div>
       </div>
-
       <div>
+        <h1 style={{textAlign:'center'}}>Statistics by task</h1>
         <LecStatsTable/>
       </div>
       </>
