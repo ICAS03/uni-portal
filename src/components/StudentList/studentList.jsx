@@ -32,7 +32,7 @@ const StudentList = () => {
           <span className="nav-span">
             <ul className="nav-list">
               <li>
-                <a href="/statistics">Statistics</a>
+                <a href="/lecturestats">Statistics</a>
               </li>
               <li>
                 <a href="/students" className="active">

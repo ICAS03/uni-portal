@@ -9,7 +9,23 @@ const LecModStat = () =>{
     return (
       <>
       <Navbar/>
-      <LecModNav/>
+      <nav className="sub-nav">
+          <span className="nav-span">
+            <ul className="nav-list">
+              <li>
+                <a href="/lecturestats" className="active">Statistics</a>
+              </li>
+              <li>
+                <a href="/studentlist" >
+                  Student List
+                </a>
+              </li>
+              <li>
+                <a href="/materials">Course Material</a>
+              </li>
+            </ul>
+          </span>
+        </nav>
 
       <div className='ModuleStatCardMain-Cont'>
         <div className="ModuleStatCard-cont">
