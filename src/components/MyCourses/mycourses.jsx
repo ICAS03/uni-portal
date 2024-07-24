@@ -47,7 +47,6 @@ const mycourses = () => {
       <AnalysisCard title="Weekly Performance Analysis">
         <WeeklyAnalysis />
       </AnalysisCard>
-    </div>
     </>
   );
 };
