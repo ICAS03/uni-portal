@@ -4,6 +4,7 @@ import DashboardCard from './dashboardCard'
 import RadialBar from './radialbar';
 import AlertCard from './alertCard';
 import DashboardCalendar from './dashboardCalendar';
+
 const dashboard = () => {
   return (
     <>
@@ -18,7 +19,7 @@ const dashboard = () => {
     <h1>Alerts</h1>
     <AlertCard alertdate="Monday, 29 July 2024" alertmodule="Ideating Start-Up" alertmessage="Good Afternoon Students, I would like to inform that your assignment has extended to 27/06"/>
     </>
-  )
-}
+  );
+};
 
-export default dashboard
+export default dashboard;

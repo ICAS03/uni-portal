@@ -1,8 +1,9 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+//import { useState } from "react";
+//import reactLogo from "./assets/react.svg";
+//import viteLogo from "/vite.svg";
+import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import StudentList from "./components/StudentList/studentList";
 import Dashboard from './components/Dashboard/dashboard'
 import MyCourses from './components/MyCourses/mycourses'
 import Tutorial from './components/Tutorial/tutorialpage'
@@ -11,6 +12,7 @@ import LecturerUploadTutorial from './components/LecturerUploadTutorial/Lecturer
 import CourseMenu from './components/CourseMenu/courseMenu';
 import LectureUpload from './components/LectureUpload/LectureUpload';
 import ProfilePage from './components/ProfilePage/profilePage';
+
 
 function App() {
   return (
@@ -23,11 +25,12 @@ function App() {
         <Route path='/modulestat' element={<ModuleStat/>}></Route>
         <Route path='/lecturer-upload-tutorial' element={<LecturerUploadTutorial/>}></Route>
         <Route path='/coursemenu' element={<CourseMenu/>}></Route>
+        <Route path="/studentlist" element={<StudentList />}></Route>
         <Route path='/lecture-upload' element={<LectureUpload/>}></Route>
         <Route path='/profilepage' element={<ProfilePage/>}></Route>
       </Routes>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

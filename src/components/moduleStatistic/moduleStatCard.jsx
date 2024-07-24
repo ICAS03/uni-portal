@@ -1,7 +1,8 @@
-import React from 'react';
+//import React from 'react';
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import './moduleStat.css'
+import "./moduleStat.css";
+
 
 function moduleStatCard(props){
     
@@ -15,4 +16,4 @@ function moduleStatCard(props){
         </div>
     );
 }
-export default moduleStatCard
+export default moduleStatCard;

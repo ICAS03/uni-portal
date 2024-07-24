@@ -1,3 +1,4 @@
+
 import React from 'react'
 import Navbar from '../Navbar/navbar';
 import ModuleCard from '../Modules/moduleCard';
@@ -6,21 +7,31 @@ import WeeklyAnalysis from '../Modules/weeklyAnalysis';
 import AnalysisCard from '../Modules/analysisCard';
 import { Link } from 'react-router-dom';
 
+
 const mycourses = () => {
   return (
     <>
-    <Navbar></Navbar>
-    <div className='mycourses-body'>
-      <div className='mycourses-selection'>
-        <h2>My Courses</h2>
-       <span className='selection-span'>
-      <ul className='selection-list'>
-        <li>All</li>
-        <li>In Progress</li>
-        <li>Completed</li>
-        <li>Incomplete</li>
-      </ul>
-     </span> 
+      <Navbar></Navbar>
+      <div className="mycourses-body">
+        <div className="mycourses-selection">
+          <h2>My Courses</h2>
+          <span className="selection-span">
+            <ul className="selection-list">
+              <li>All</li>
+              <li>In Progress</li>
+              <li>Completed</li>
+              <li>Incomplete</li>
+            </ul>
+          </span>
+        </div>
+        <div className="modules">
+          <ModuleCard></ModuleCard>
+          <ModuleCard></ModuleCard>
+          <ModuleCard></ModuleCard>
+        </div>
+        <AnalysisCard title="Weekly Performance Analysis">
+          <WeeklyAnalysis />
+        </AnalysisCard>
       </div>
       <div className='modules'>
         <Link to='/coursemenu' className='nav-links'>
@@ -38,7 +49,7 @@ const mycourses = () => {
       </AnalysisCard>
     </div>
     </>
-  )
-}
+  );
+};
 
-export default mycourses
+export default mycourses;

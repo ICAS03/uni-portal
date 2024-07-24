@@ -1,8 +1,9 @@
-import React from 'react';
-import ModuleStatCard from './moduleStatCard.jsx'
-import TaskTable from './taskTable.jsx'
-import './moduleStat.css'
-import Navbar from '../Navbar/navbar';
+//import React from 'react';
+import ModuleStatCard from "./moduleStatCard.jsx";
+import TaskTable from "./taskTable.jsx";
+import "./moduleStat.css";
+import Navbar from "../Navbar/navbar";
+
 
 const moduleStat = () =>{
     return (
@@ -16,13 +17,8 @@ const moduleStat = () =>{
       <ModuleStatCard name = "Progress" score = {33} color='#AB47BC'/>
       <ModuleStatCard name = "Overall Course Mark" score = {10} color='#29B6F6'/>
       </div>
-      <div className="aiReview">
-      <p>Ivy has been doing great work so far, showing a solid understanding of the material. To improve further, I recommend providing more detailed answers to each question. This will help demonstrate a deeper grasp of the concepts. Keep up the good work!</p>
-      </div>
-      <TaskTable/>
-      </div>
-      </>
-    )
-  }
-  
-  export default moduleStat
+    </>
+  );
+};
+
+export default moduleStat;
