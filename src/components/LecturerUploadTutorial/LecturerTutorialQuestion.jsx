@@ -3,7 +3,7 @@ import './LecturerTutorialQuestion.css';
 
 const tutorialquestion = () => {
   return (
-    <textarea className="tutorial-question"  />
+    <textarea className="tutorial-question"/>
   )
 }
 

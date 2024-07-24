@@ -1,23 +1,28 @@
 .question-header {
-    margin-bottom: 16px;
-    padding: 20px; 
+    margin-top: 16px;
+    text-align: left;
   }
 
 .addQuestionButton{
     border:1px solid rgb(255, 255, 255);
-    padding:8px 8px;
+    padding:12px 12px;
     background-color: rgb(255, 255, 255);
     font-weight: bold;
     transition-duration:0.4s;
     cursor:pointer;
-    width: 100%;
+    width: 97%;
     height: 20%;
     text-align: left;
     font-size: 18px;
+    margin-left: 5px;
+    margin-top: -5px;
   }
 
 .addQuestionButton:hover{
     background-color: rgb(212, 212, 212);
   }
-  
+
+.questionss{
+  margin-right: 30px;
+}
   
