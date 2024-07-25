@@ -4,7 +4,7 @@ import TaskTable from "./taskTable.jsx";
 import "./moduleStat.css";
 import Navbar from "../Navbar/navbar";
 
-function moduleStat(){
+function ModuleStat(){
 
     return (
       <>
