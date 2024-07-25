@@ -13,6 +13,7 @@ import CourseMenu from './components/CourseMenu/courseMenu';
 import LecModStat from './components/LecModStat/LecModStat';
 import LectureUpload from './components/LectureUpload/LectureUpload';
 import ProfilePage from './components/ProfilePage/profilePage';
+import Lecturerdash from './components/MyCourses/lecturerdash'
 
 
 
@@ -20,8 +21,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<LecModStat/>}></Route>
-        <Route path='/' element={<ProfilePage/>}></Route>
+        <Route path='/' element={<Dashboard/>}></Route>
         <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
         <Route path='/mycourses' element={<MyCourses></MyCourses>}></Route>
         <Route path='/tutorial' element={<Tutorial></Tutorial>}></Route>
@@ -32,6 +32,7 @@ function App() {
         <Route path="/studentlist" element={<StudentList />}></Route>
         <Route path='/lecture-upload' element={<LectureUpload/>}></Route>
         <Route path='/profilepage' element={<ProfilePage/>}></Route>
+        <Route path='/lecturerdash' element={<Lecturerdash/>}></Route>
       </Routes>
     </Router>
   );
