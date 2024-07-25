@@ -1,0 +1,10 @@
+.tutorial-question {
+    width: 100%;
+    height: 615px;
+    background-color: #DFDFDF;
+    border-radius: 10px;
+    border: 1px solid rgb(255, 255, 255);
+    padding: 15px;
+    font-size: 18px;
+    
+}
