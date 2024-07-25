@@ -17,6 +17,7 @@ function TaskTable() {
             </tr>
           </thead>
           <tbody>
+
             <tr key="tutorial1">
               <td>Tutorial 1</td>
               <td>
@@ -35,6 +36,7 @@ function TaskTable() {
                 <button className="btn">View</button>
               </td>
             </tr>
+
 
             <tr key="tutorial2">
               <td>Tutorial 2</td>
