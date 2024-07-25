@@ -9,6 +9,10 @@ import Tutorial from "./components/Tutorial/tutorialpage";
 import ModuleStat from "./components/moduleStatistic/moduleStat";
 import CourseMenu from "./components/CourseMenu/courseMenu";
 import StudentList from "./components/StudentList/studentList";
+import LecturerEdit from "./components/LecturerEdit/lecturerEdit";
+import StudentEdit from "./components/StudentEdit/studentEdit";
+import ModuleEdit from "./components/ModuleEdit/moduleEdit";
+import AdminDash from "./components/AdminDash/adminDash";
 
 function App() {
   return (
@@ -21,6 +25,10 @@ function App() {
         <Route path="/modulestat" element={<ModuleStat />}></Route>
         <Route path="/coursemenu" element={<CourseMenu />}></Route>
         <Route path="/studentlist" element={<StudentList />}></Route>
+        <Route path="/lectureredit" element={<LecturerEdit />}></Route>
+        <Route path="/studentedit" element={<StudentEdit />}></Route>
+        <Route path="/moduleedit" element={<ModuleEdit />}></Route>
+        <Route path="/admindash" element={<AdminDash />}></Route>
       </Routes>
     </Router>
   );
