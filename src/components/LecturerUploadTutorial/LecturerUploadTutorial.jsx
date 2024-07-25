@@ -11,8 +11,8 @@ const LecturerUploadTutorial = () => {
     <Navbar></Navbar>
     <form>
     <div className='question-body'>
-        <div className='question-content'>
-           <span className='question title'>
+        <div className='questionContent'>
+           <span className='questionTitle'>
             <label>
             <input type="text" className='tutName' placeholder='Tutorial Name...'/>
             </label>
