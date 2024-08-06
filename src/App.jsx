@@ -7,6 +7,9 @@ import StudentList from "./components/StudentList/studentList";
 import LecturerEdit from "./components/LecturerEdit/lecturerEdit";
 import StudentEdit from "./components/StudentEdit/studentEdit";
 import ModuleEdit from "./components/ModuleEdit/moduleEdit";
+import AddStudent from "./components/AddStudent/addStudent";
+import AddLecturer from "./components/AddLecturer/addLecturer";
+import AddModule from "./components/AddModule/addModule";
 import AdminDash from "./components/AdminDash/adminDash";
 import Dashboard from "./components/Dashboard/dashboard";
 import MyCourses from "./components/MyCourses/mycourses";
@@ -37,6 +40,9 @@ function App() {
         <Route path="/studentedit" element={<StudentEdit />}></Route>
         <Route path="/moduleedit" element={<ModuleEdit />}></Route>
         <Route path="/admindash" element={<AdminDash />}></Route>
+        <Route path="/addstudent" element= {<AddStudent />}></Route>
+        <Route path="/addLecturer" element= {<AddLecturer />}></Route>
+        <Route path="/addModule" element= {<AddModule />}></Route>
         <Route path="/lecture-upload" element={<LectureUpload />}></Route>
         <Route path="/profilepage" element={<ProfilePage />}></Route>
       </Routes>
