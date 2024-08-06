@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import AdminNav from "../AdminNav/adminNav";
 import search from "../../assets/icons/search.png";
 import "../StudentEdit/studentEdit.css";
+import { Link } from "react-router-dom";
 
 const StudentEdit = () => {
   const [students, setStudents] = useState([]);
@@ -47,22 +48,22 @@ const StudentEdit = () => {
                 </a>
               </li>
               <li>
-                <a href="/add student">Add student</a>
+                  <Link to="/addstudent">Add student</Link>        
               </li>
             </ul>
           </span>
         </nav>
       </div>
       <>
-        <div className="search-filter">
-          <input
-            type="text"
-            placeholder="Search"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <img src={search} alt=""></img>
-        </div>
+          <div className="search-filter">
+            <input
+              type="text"
+              placeholder="Search"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <img src={search} alt=""></img>
+          </div>
         <table className="students-table">
           <thead>
             <tr>
