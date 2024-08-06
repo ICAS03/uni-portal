@@ -16,6 +16,7 @@ import LecturerUploadTutorial from "./components/LecturerUploadTutorial/Lecturer
 import CourseMenu from "./components/CourseMenu/courseMenu";
 import LectureUpload from "./components/LectureUpload/LectureUpload";
 import ProfilePage from "./components/ProfilePage/profilePage";
+import AdminLogin from "./components/AdminLogin/adminLogin";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/admindash" element={<AdminDash />}></Route>
         <Route path="/lecture-upload" element={<LectureUpload />}></Route>
         <Route path="/profilepage" element={<ProfilePage />}></Route>
+        <Route path="/adminLogin" element={<AdminLogin />}></Route>
       </Routes>
     </Router>
   );
