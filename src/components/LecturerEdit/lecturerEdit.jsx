@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import AdminNav from "../AdminNav/adminNav";
 import search from "../../assets/icons/search.png";
 import "../LecturerEdit/lecturerEdit.css";
+import { Link } from "react-router-dom";
 
 const LecturerEdit = () => {
   const [lecturers, setLecturers] = useState([]);
@@ -44,7 +45,8 @@ const LecturerEdit = () => {
                 </a>
               </li>
               <li>
-                <a href="/add lecturer">Add lecturer</a>
+                <Link to="/addLecturer">Add lecturer</Link>
+                
               </li>
             </ul>
           </span>

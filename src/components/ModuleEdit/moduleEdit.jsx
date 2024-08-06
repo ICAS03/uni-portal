@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./moduleEdit.css";
 import AdminNav from "../AdminNav/adminNav";
 import search from "../../assets/icons/search.png";
+import { Link } from "react-router-dom";
 
 const ModuleEdit = () => {
   const [modules, setModules] = useState([]);
@@ -74,7 +75,7 @@ const ModuleEdit = () => {
                 </a>
               </li>
               <li>
-                <a href="/add-module">Add module</a>
+              <Link to="/addModule">Add module</Link>  
               </li>
             </ul>
           </span>

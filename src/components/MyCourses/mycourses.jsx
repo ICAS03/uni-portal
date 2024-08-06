@@ -41,9 +41,10 @@ const MyCourses = () => {
             <ModuleCard />
           </Link>
         </div>
-        <AnalysisCard title="Weekly Performance Analysis">
-          <WeeklyAnalysis />
-        </AnalysisCard>
+      <AnalysisCard title="Weekly Performance Analysis">
+        <WeeklyAnalysis />
+      </AnalysisCard>
+      </div>
       </div>
     </>
   );
