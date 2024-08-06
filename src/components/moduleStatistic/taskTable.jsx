@@ -1,4 +1,3 @@
-//import React from 'react';
 import "./taskTable.css";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
@@ -18,7 +17,8 @@ function TaskTable() {
             </tr>
           </thead>
           <tbody>
-            <tr>
+
+            <tr key="tutorial1">
               <td>Tutorial 1</td>
               <td>
                 <div className="Submitted">Submitted</div>
@@ -37,7 +37,8 @@ function TaskTable() {
               </td>
             </tr>
 
-            <tr>
+
+            <tr key="tutorial2">
               <td>Tutorial 2</td>
               <td>
                 <div className="Unsubmitted">Unsubmitted</div>
@@ -56,7 +57,7 @@ function TaskTable() {
               </td>
             </tr>
 
-            <tr>
+            <tr key="tutorial3">
               <td>Tutorial 3</td>
               <td>
                 <div className="Submitted">Submitted</div>
@@ -75,7 +76,7 @@ function TaskTable() {
               </td>
             </tr>
 
-            <tr>
+            <tr key="tutorial4">
               <td>Tutorial 4</td>
               <td>
                 <div className="Submitted">Submitted</div>
@@ -94,7 +95,7 @@ function TaskTable() {
               </td>
             </tr>
 
-            <tr>
+            <tr key="tutorial5">
               <td>Tutorial 5</td>
               <td>
                 <div className="Submitted">Submitted</div>

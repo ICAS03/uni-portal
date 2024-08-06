@@ -1,0 +1,48 @@
+.TaskTable{
+    border: 1px solid hsl(0, 0%, 80%);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px hsl(0, 0%, 0%, 0.1);
+    text-align: left;
+    font-family: Arial, san-serif;
+    /* border-collapse: separate;  */
+    margin-bottom: 20vh;
+    border-bottom: 1px solid grey; 
+  }
+  
+  .TaskTable td ,th{
+    padding:15px 50px;
+  }
+  
+  
+  .TaskTable th{
+      color: grey;
+  }   
+  
+  .TaskTableContainer{
+     display:flex;
+     justify-content: center;
+  }
+  
+  
+  .ProgbarTableCont1{
+    display:flex;
+    align-items: center; /* aligns item vertically*/
+    align-content:space-between;
+    min-width:70px;
+    max-width:70px;
+  }
+  
+  /* .ProgbarTableCont1 div{
+    border:1px solid black;
+  } */
+  
+  .ProgbarTableCont2{
+    max-width:30px;
+    margin-left: 10px;
+  }
+  
+
+  .ModuleStatTableCircle{
+    height: 80%;
+    width: 80%;
+  }
