@@ -18,6 +18,7 @@ import ModuleStat from "./components/moduleStatistic/moduleStat";
 import LecturerUploadTutorial from "./components/LecturerUploadTutorial/LecturerUploadTutorial";
 import CourseMenu from "./components/CourseMenu/courseMenu";
 import LecModStat from './components/LecModStat/LecModStat';
+import AdminLogin from "./components/AdminLogin/adminLogin";
 import LectureUpload from './components/LectureUpload/LectureUpload';
 import ProfilePage from './components/ProfilePage/profilePage';
 import Lecturerdash from './components/MyCourses/lecturerdash'
@@ -45,6 +46,7 @@ function App() {
         <Route path="/addModule" element= {<AddModule />}></Route>
         <Route path="/lecture-upload" element={<LectureUpload />}></Route>
         <Route path="/profilepage" element={<ProfilePage />}></Route>
+        <Route path="/adminLogin" element={<AdminLogin />}></Route>
       </Routes>
     </Router>
   );
