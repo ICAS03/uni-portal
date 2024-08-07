@@ -11,11 +11,23 @@ const CourseMenu = () => {
       <div className="content-div">
         <div className="course-menu">
           <h2>Course Menu</h2>
-          <CourseMenuItem />
-          <CourseMenuItem />
-          <CourseMenuItem />
-          <CourseMenuItem />
-          <CourseMenuItem />
+          <CourseMenuItem
+            title="General" 
+            content={['Announcement', 'Books']} 
+          />
+          <CourseMenuItem
+            title="Introduction" 
+            content={['Module Information', 'Weekly Plan', 'Course Briefing']} 
+          />
+          <CourseMenuItem
+            title="Lectures" 
+            content={[
+              'Introduction to Software Engineering',
+              'Software Tools and Environments',
+              'Agile Software Development',
+              'Software Quality Reliability'
+            ]} 
+          />
         </div>
         <div className="right-whole-div">
           <h1 className="course-title">Software Engineering</h1>

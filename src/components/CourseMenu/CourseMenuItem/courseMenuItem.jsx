@@ -1,14 +1,31 @@
-//import React from "react";
-import "./courseMenuItem.css";
+import React, { useState } from 'react';
+import './courseMenuItem.css'; // Ensure you have the CSS file for styling
+import dropDownIcon from '../../../assets/icons/drop_down_black.png'; 
 
-const CourseMenuItem = () => {
+const CourseMenuItem = ({ title, content }) => {
+  const [isOpen, setIsOpen] = useState(true);
+
+  const toggleCard = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className="menuitem-body">
-      <div className="title">Announcement</div>
-      <p>Announcement 01</p>
-      <p>Announcement 02</p>
-      <p>Announcement 03</p>
-      <p>Announcement 04</p>
+    <div className="collapsible-card">
+      <div className="header" onClick={toggleCard}>
+        <span>{title}</span>
+        <img 
+          src={dropDownIcon} 
+          alt="Dropdown Icon" 
+          className={`arrow ${isOpen ? 'open' : ''}`} 
+        />
+      </div>
+      {isOpen && (
+        <div className="content">
+          {content.map((item, index) => (
+            <button key={index}>{item}</button>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

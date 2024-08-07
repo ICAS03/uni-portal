@@ -23,28 +23,19 @@ const MyCourses = () => {
           </span>
         </div>
         <div className="modules">
-          <ModuleCard />
-          <ModuleCard />
-          <ModuleCard />
+          <Link to="/coursemenu" className="nav-links">
+            <ModuleCard />
+          </Link>
+          <Link to="/coursemenu" className="nav-links">
+            <ModuleCard />
+          </Link>
+          <Link to="/coursemenu" className="nav-links">
+            <ModuleCard />
+          </Link>
         </div>
         <AnalysisCard title="Weekly Performance Analysis">
           <WeeklyAnalysis />
         </AnalysisCard>
-        <div className="modules">
-          <Link to="/coursemenu" className="nav-links">
-            <ModuleCard />
-          </Link>
-          <Link to="/coursemenu" className="nav-links">
-            <ModuleCard />
-          </Link>
-          <Link to="/coursemenu" className="nav-links">
-            <ModuleCard />
-          </Link>
-        </div>
-      <AnalysisCard title="Weekly Performance Analysis">
-        <WeeklyAnalysis />
-      </AnalysisCard>
-      </div>
       </div>
     </>
   );
