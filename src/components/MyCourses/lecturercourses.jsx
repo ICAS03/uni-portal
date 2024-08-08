@@ -28,7 +28,6 @@ useEffect(()=> {
         ...doc.data(),
       }));
     
-    
     setModules(moduleList);
       } catch (error) {
         console.error('Error fetching modules: ', error);
@@ -55,9 +54,14 @@ useEffect(()=> {
         </div>
         <div className="modules">
         {modules.map((module) => (
-         <Link to="/coursemenu" className='lecNav'>
-          <Lecmodulecard key={module.id} module={module} />
-          </Link>
+              <Link 
+              key={module.id} 
+              to="/coursemenu" 
+              state={{ module }} // Pass the module data via state
+              className='lecNav'
+            >
+              <Lecmodulecard module={module} />
+              </Link>
         ))}
         </div>
         <AnalysisCard title="Weekly Performance Analysis">

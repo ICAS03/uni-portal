@@ -1,12 +1,19 @@
 //import React from 'react'
 import "./courseMenu.css";
 import Navbar from "../Navbar/navbar";
+import { useLocation } from "react-router-dom";
 import CourseMenuItem from "./CourseMenuItem/courseMenuItem";
 import CourseMenuContent from "./CourseMenuContent/courseMenuContent";
 import AiChatbot from '../AiChatbot/aiChatbot';
 
 
 const CourseMenu = () => {
+  const location = useLocation();
+  const { module } = location.state || {}; 
+
+  if (!module) {
+    return <div>No module selected</div>;
+  }
   return (
     <>
       <Navbar />
@@ -32,13 +39,13 @@ const CourseMenu = () => {
           />
         </div>
         <div className="right-whole-div">
-          <h1 className="course-title">Software Engineering</h1>
+          <h1 className="course-title">{module.name}</h1>
           <ul className="selection-list">
             <li>Modules</li>
             <li>Assignments</li>
           </ul>
           <div className="right-content-div">
-            <CourseMenuContent />
+            <CourseMenuContent  module={module}/>
           </div>
         </div>
         <div className="ai-div">

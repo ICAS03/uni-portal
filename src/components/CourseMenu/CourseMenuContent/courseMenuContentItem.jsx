@@ -4,13 +4,13 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../../utils/AuthContext';
 import dropDownIcon from '../../../assets/icons/drop_down_black.png'; 
 
-const CourseMenuContentItem = ({ title, content, icon, mini_title }) => {
+const CourseMenuContentItem = ({ title, content, icon, mini_title , module }) => {
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
   const { userRole } = useAuth();
 
   const handleClick = () => {
-    navigate('/lecturer-upload-tutorial'); // Replace with the desired path
+    navigate('/lecturer-upload-tutorial' , {state : {module}});
   };
 
   const toggleCard = () => {
