@@ -3,30 +3,37 @@ import AdminNav from "../AdminNav/adminNav";
 import search from "../../assets/icons/search.png";
 import "../StudentEdit/studentEdit.css";
 import { Link } from "react-router-dom";
+import { db } from "../../utils/firebase"; // Adjust the import path as necessary
+import { collection, getDocs } from "firebase/firestore";
 
 const StudentEdit = () => {
   const [students, setStudents] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    // Dummy data
-    const fetchedData = Array(12).fill({
-      id: "0351154",
-      firstname: "Singh",
-      lastname: "Anoop",
-      email: "anoopsingh@sd.taylors.edu.my",
-      phone: "011-111111",
-    });
-    setStudents(fetchedData);
+    const fetchStudents = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "students"));
+        const studentsData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setStudents(studentsData);
+      } catch (error) {
+        console.error("Error fetching students: ", error);
+      }
+    };
+
+    fetchStudents();
   }, []);
 
   const filteredStudents = students.filter((student) => {
-    const term = searchTerm.toLowerCase();
+    const term = searchTerm;
     return (
       student.id.includes(term) ||
-      student.firstname.toLowerCase().includes(term) ||
-      student.lastname.toLowerCase().includes(term) ||
-      student.email.toLowerCase().includes(term) ||
+      student.firstname.includes(term) ||
+      student.lastname.includes(term) ||
+      student.email.includes(term) ||
       student.phone.includes(term)
     );
   });
@@ -40,30 +47,27 @@ const StudentEdit = () => {
           <span className="nav-span">
             <ul className="nav-list">
               <li>
-                <a
-                  href="src\components\StudentEdit\studentList.jsx"
-                  className="active"
-                >
+                <a href="/students" className="active">
                   Student List
                 </a>
               </li>
               <li>
-                  <Link to="/addstudent">Add student</Link>        
+                <Link to="/addstudent">Add student</Link>
               </li>
             </ul>
           </span>
         </nav>
       </div>
       <>
-          <div className="search-filter">
-            <input
-              type="text"
-              placeholder="Search"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <img src={search} alt=""></img>
-          </div>
+        <div className="search-filter">
+          <input
+            type="text"
+            placeholder="Search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <img src={search} alt="search icon" />
+        </div>
         <table className="students-table">
           <thead>
             <tr>
@@ -75,13 +79,13 @@ const StudentEdit = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredStudents.map((student, index) => (
-              <tr key={index}>
+            {filteredStudents.map((student) => (
+              <tr key={student.id}>
                 <td>{student.id}</td>
-                <td>{student.firstname}</td>
-                <td>{student.lastname}</td>
+                <td>{student.firstName}</td>
+                <td>{student.lastName}</td>
                 <td>{student.email}</td>
-                <td>{student.phone}</td>
+                <td>{student.phoneNumber}</td>
               </tr>
             ))}
           </tbody>

@@ -3,14 +3,18 @@ import AdminNav from "../AdminNav/adminNav";
 import { Link } from "react-router-dom";
 import search from "../../assets/icons/search.png";
 import "../AddStudent/addStudent.css";
+import { db } from "../../utils/firebase";
+import { collection, addDoc } from "firebase/firestore";
+import { useAuth } from "../../utils/AuthContext";
 
 const AddStudent = () => {
+  const { signup } = useAuth();
   const [student, setStudent] = useState({
-    id: "",
     firstName: "",
     lastName: "",
     email: "",
     phoneNumber: "",
+    password: "",
   });
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -22,9 +26,47 @@ const AddStudent = () => {
     });
   };
 
-  const handleSave = () => {
-    console.log("Student data saved:", student);
-    // Implement save functionality here, e.g., sending data to backend
+  const handleConfirmation = async () => {
+    const confirmSave = window.confirm("Are you sure you want to submit?");
+
+    if (!confirmSave) {
+      return;
+    }
+
+    try {
+      console.log(student.email, student.password);
+      await signup(student.email, student.password);
+
+      alert("Authentication updated successfully!");
+    } catch (e) {
+      console.error("Error updating authentication: ", e);
+    }
+  };
+
+  const handleSave = async () => {
+    try {
+      await addDoc(collection(db, "students"), {
+        firstName: student.firstName,
+        lastName: student.lastName,
+        email: student.email,
+        phoneNumber: student.phoneNumber,
+        password: student.password,
+      });
+      alert("Student data saved to Firestore!");
+
+      // Clear the form after saving
+      setStudent({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        password: "",
+      });
+
+      handleConfirmation();
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
   };
 
   const handleCancel = () => {
@@ -33,6 +75,7 @@ const AddStudent = () => {
       lastName: "",
       email: "",
       phoneNumber: "",
+      password: "",
     });
   };
 
@@ -64,18 +107,9 @@ const AddStudent = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <img src={search} alt=""></img>
+          <img src={search} alt="search icon" />
         </div>
         <form className="student-form">
-        <div className="form-group">
-            <label>ID</label>
-            <input
-              type="text"
-              name="id"
-              value={student.id}
-              onChange={handleChange}
-            />
-          </div>
           <div className="form-group">
             <label>First Name</label>
             <input
@@ -112,11 +146,24 @@ const AddStudent = () => {
               onChange={handleChange}
             />
           </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              value={student.password}
+              onChange={handleChange}
+            />
+          </div>
           <div className="form-actions">
             <button type="button" onClick={handleSave} className="save-button">
               Save
             </button>
-            <button type="button" onClick={handleCancel} className="cancel-button">
+            <button
+              type="button"
+              onClick={handleCancel}
+              className="cancel-button"
+            >
               Cancel
             </button>
           </div>

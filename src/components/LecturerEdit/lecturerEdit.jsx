@@ -3,30 +3,37 @@ import AdminNav from "../AdminNav/adminNav";
 import search from "../../assets/icons/search.png";
 import "../LecturerEdit/lecturerEdit.css";
 import { Link } from "react-router-dom";
+import { db } from "../../utils/firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 const LecturerEdit = () => {
   const [lecturers, setLecturers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    // Dummy data
-    const fetchedData = Array(12).fill({
-      id: "0351154",
-      firstname: "Singh",
-      lastname: "Anoop",
-      email: "anoopsingh@sd.taylors.edu.my",
-      phone: "011-111111",
-    });
-    setLecturers(fetchedData);
+    const fetchLecturers = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "lecturers"));
+        const lecturersData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setLecturers(lecturersData);
+      } catch (error) {
+        console.error("Error fetching lecturers: ", error);
+      }
+    };
+
+    fetchLecturers();
   }, []);
 
   const filteredLecturers = lecturers.filter((lecturer) => {
-    const term = searchTerm.toLowerCase();
+    const term = searchTerm;
     return (
       lecturer.id.includes(term) ||
-      lecturer.firstname.toLowerCase().includes(term) ||
-      lecturer.lastname.toLowerCase().includes(term) ||
-      lecturer.email.toLowerCase().includes(term) ||
+      lecturer.firstname.includes(term) ||
+      lecturer.lastname.includes(term) ||
+      lecturer.email.includes(term) ||
       lecturer.phone.includes(term)
     );
   });
@@ -46,7 +53,6 @@ const LecturerEdit = () => {
               </li>
               <li>
                 <Link to="/addLecturer">Add lecturer</Link>
-                
               </li>
             </ul>
           </span>
@@ -60,7 +66,7 @@ const LecturerEdit = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <img src={search} alt=""></img>
+          <img src={search} alt="search icon" />
         </div>
         <table className="lecturers-table">
           <thead>
@@ -73,13 +79,13 @@ const LecturerEdit = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredLecturers.map((lecturer, index) => (
-              <tr key={index}>
+            {filteredLecturers.map((lecturer) => (
+              <tr key={lecturer.id}>
                 <td>{lecturer.id}</td>
-                <td>{lecturer.firstname}</td>
-                <td>{lecturer.lastname}</td>
+                <td>{lecturer.firstName}</td>
+                <td>{lecturer.lastName}</td>
                 <td>{lecturer.email}</td>
-                <td>{lecturer.phone}</td>
+                <td>{lecturer.phoneNumber}</td>
               </tr>
             ))}
           </tbody>
