@@ -3,14 +3,18 @@ import AdminNav from "../AdminNav/adminNav";
 import { Link } from "react-router-dom";
 import search from "../../assets/icons/search.png";
 import "../AddLecturer/addLecturer.css";
+import { db } from "../../utils/firebase";
+import { collection, addDoc } from "firebase/firestore";
+import { useAuth } from "../../utils/AuthContext";
 
 const AddLecturer = () => {
+  const { signup } = useAuth();
   const [lecturers, setLecturers] = useState({
-    id: "",
     firstName: "",
     lastName: "",
     email: "",
     phoneNumber: "",
+    password: "",
   });
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -22,9 +26,47 @@ const AddLecturer = () => {
     });
   };
 
-  const handleSave = () => {
-    console.log("Lecturer data saved:", lecturers);
-    // Implement save functionality here, e.g., sending data to backend
+  const handleConfirmation = async () => {
+    const confirmSave = window.confirm("Are you sure you want to submit?");
+
+    if (!confirmSave) {
+      return;
+    }
+
+    try {
+      console.log(lecturers.email, lecturers.password);
+      await signup(lecturers.email, lecturers.password);
+
+      alert("Authentication updated successfully!");
+    } catch (e) {
+      console.error("Error updating authentication: ", e);
+    }
+  };
+
+  const handleSave = async () => {
+    try {
+      await addDoc(collection(db, "lecturers"), {
+        firstName: lecturers.firstName,
+        lastName: lecturers.lastName,
+        email: lecturers.email,
+        phoneNumber: lecturers.phoneNumber,
+        password: lecturers.password,
+      });
+      alert("Student data saved to Firestore!");
+
+      // Clear the form after saving
+      setLecturers({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        password: "",
+      });
+
+      handleConfirmation();
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
   };
 
   const handleCancel = () => {
@@ -33,6 +75,7 @@ const AddLecturer = () => {
       lastName: "",
       email: "",
       phoneNumber: "",
+      password: "",
     });
   };
 
@@ -67,15 +110,6 @@ const AddLecturer = () => {
           <img src={search} alt=""></img>
         </div>
         <form className="lecturer-form">
-        <div className="form-group">
-            <label>ID</label>
-            <input
-              type="text"
-              name="id"
-              value={lecturers.id}
-              onChange={handleChange}
-            />
-          </div>
           <div className="form-group">
             <label>First Name</label>
             <input
@@ -112,11 +146,24 @@ const AddLecturer = () => {
               onChange={handleChange}
             />
           </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              value={lecturers.password}
+              onChange={handleChange}
+            />
+          </div>
           <div className="form-actions">
             <button type="button" onClick={handleSave} className="save-button">
               Save
             </button>
-            <button type="button" onClick={handleCancel} className="cancel-button">
+            <button
+              type="button"
+              onClick={handleCancel}
+              className="cancel-button"
+            >
               Cancel
             </button>
           </div>
