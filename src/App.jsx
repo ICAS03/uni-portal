@@ -22,6 +22,7 @@ import AdminLogin from "./components/AdminLogin/adminLogin";
 import LectureUpload from './components/LectureUpload/LectureUpload';
 import ProfilePage from './components/ProfilePage/profilePage';
 import Lecturerdash from './components/MyCourses/lecturerdash'
+import LecturerCourses from './components/MyCourses/lecturercourses';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
         <Route path="/addModule" element= {<AddModule />}></Route>
         <Route path="/lecture-upload" element={<LectureUpload />}></Route>
         <Route path="/profilepage" element={<ProfilePage />}></Route>
+        <Route path="/lecturercourses" element={<LecturerCourses />}></Route>
       </Routes>
   );
 }

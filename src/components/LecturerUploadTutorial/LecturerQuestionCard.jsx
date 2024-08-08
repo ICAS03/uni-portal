@@ -1,6 +1,5 @@
 import React from 'react'
 import './LecturerQuestionCard.css';
-import TutorialQuestion from './LecturerTutorialQuestion'
 
 const questioncard = () => {
   return (
@@ -9,7 +8,7 @@ const questioncard = () => {
         Question :
         </div>
        <div className='question-answer-div'>
-        <TutorialQuestion></TutorialQuestion>
+       <textarea className="tutorial-question"/>
         <span className='attachment'>
                 Upload Attachment
              </span>
