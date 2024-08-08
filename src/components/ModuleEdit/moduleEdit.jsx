@@ -3,6 +3,8 @@ import "./moduleEdit.css";
 import AdminNav from "../AdminNav/adminNav";
 import search from "../../assets/icons/search.png";
 import { Link } from "react-router-dom";
+import { db } from "../../utils/firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 const ModuleEdit = () => {
   const [modules, setModules] = useState([]);
@@ -10,54 +12,34 @@ const ModuleEdit = () => {
 
   useEffect(() => {
     const fetchModules = async () => {
-      const data = [
-        {
-          id: 1,
-          title: "Software Engineering",
-          levelOfStudy: "Bachelor's Degree",
-          professor: "Prof. Siti Aishah",
-          deadline: "2024-08-15",
-          lectureDay: "Monday",
-          tutorialDay: "Wednesday",
-          lectureTime: "10:30 AM - 12:30 PM",
-          tutorialTime: "8:00 AM - 12:00 PM",
-          lectureLocation: "Lecture Theatre 1",
-          tutorialLocation: "Block C, Computer Lab 7",
-        },
-
-        {
-          id: 2,
-          title: "System Fundamentals",
-          levelOfStudy: "Bachelor's Degree",
-          professor: "Dr. Ariff Azman",
-          deadline: "2024-09-10",
-          lectureDay: "Monday",
-          tutorialDay: "Tuesday",
-          lectureTime: "2:00 PM - 4:00 PM",
-          tutorialTime: "8:00 AM - 12:00 AM",
-          lectureLocation: "Lecture Theatre 3",
-          tutorialLocation: "Block C, Computer Lab 3",
-        },
-      ];
-      setModules(data);
+      try {
+        const querySnapshot = await getDocs(collection(db, "modules"));
+        const modulesData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setModules(modulesData);
+      } catch (error) {
+        console.error("Error fetching modules: ", error);
+      }
     };
 
     fetchModules();
   }, []);
 
   const filteredModules = modules.filter((module) => {
-    const term = searchTerm.toLowerCase();
+    const term = searchTerm;
     return (
-      module.title.toLowerCase().includes(term) ||
-      module.levelOfStudy.toLowerCase().includes(term) ||
-      module.professor.toLowerCase().includes(term) ||
+      module.title.includes(term) ||
+      module.levelOfStudy.includes(term) ||
+      module.professor.includes(term) ||
       module.deadline.includes(term) ||
-      module.lectureDay.toLowerCase().includes(term) ||
-      module.tutorialDay.toLowerCase().includes(term) ||
-      module.lectureTime.toLowerCase().includes(term) ||
-      module.tutorialTime.toLowerCase().includes(term) ||
-      module.lectureLocation.toLowerCase().includes(term) ||
-      module.tutorialLocation.toLowerCase().includes(term)
+      module.lectureDay.includes(term) ||
+      module.tutorialDay.includes(term) ||
+      module.lectureTime.includes(term) ||
+      module.tutorialTime.includes(term) ||
+      module.lectureLocation.includes(term) ||
+      module.tutorialLocation.includes(term)
     );
   });
 
@@ -70,12 +52,12 @@ const ModuleEdit = () => {
           <span className="nav-span">
             <ul className="nav-list">
               <li>
-                <a href="/module-list" className="active">
+                <Link to="/module-list" className="active">
                   Module List
-                </a>
+                </Link>
               </li>
               <li>
-              <Link to="/addModule">Add module</Link>  
+                <Link to="/addModule">Add module</Link>
               </li>
             </ul>
           </span>
@@ -89,7 +71,7 @@ const ModuleEdit = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <img src={search} alt="" />
+          <img src={search} alt="Search icon" />
         </div>
         <div className="module-list-container">
           <div className="module-list">

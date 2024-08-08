@@ -3,6 +3,8 @@ import AdminNav from "../AdminNav/adminNav";
 import { Link } from "react-router-dom";
 import search from "../../assets/icons/search.png";
 import "../AddModule/addModule.css";
+import { db } from "../../utils/firebase";
+import { collection, addDoc } from "firebase/firestore";
 
 const AddModule = () => {
   const [modules, setModules] = useState({
@@ -27,13 +29,25 @@ const AddModule = () => {
     });
   };
 
-  const handleSave = () => {
-    console.log("Module data saved:", modules);
-    // Implement save functionality here, e.g., sending data to backend
-  };
+  const handleSave = async () => {
+    try {
+      await addDoc(collection(db, "modules"), {
+        title: modules.title,
+        levelOfStudy: modules.levelOfStudy,
+        professor: modules.professor,
+        deadline: modules.deadline,
+        lectureDay: modules.lectureDay,
+        tutorialDay: modules.tutorialDay,
+        lectureTime: modules.lectureTime,
+        tutorialTime: modules.tutorialTime,
+        lectureLocation: modules.lectureLocation,
+        tutorialLocation: modules.tutorialLocation,
+      });
 
-  const handleCancel = () => {
-    setModules({
+      alert("Module data saved to Firestore!");
+
+      // Clear the form after saving
+      setModules({
         title: "",
         levelOfStudy: "",
         professor: "",
@@ -44,6 +58,24 @@ const AddModule = () => {
         tutorialTime: "",
         lectureLocation: "",
         tutorialLocation: "",
+      });
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  };
+
+  const handleCancel = () => {
+    setModules({
+      title: "",
+      levelOfStudy: "",
+      professor: "",
+      deadline: "",
+      lectureDay: "",
+      tutorialDay: "",
+      lectureTime: "",
+      tutorialTime: "",
+      lectureLocation: "",
+      tutorialLocation: "",
     });
   };
 
@@ -75,10 +107,10 @@ const AddModule = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <img src={search} alt=""></img>
+          <img src={search} alt="search icon" />
         </div>
         <form className="module-form">
-        <div className="form-group">
+          <div className="form-group">
             <label>Module title</label>
             <input
               type="text"
@@ -142,7 +174,7 @@ const AddModule = () => {
             />
           </div>
           <div className="form-group">
-            <label>Tutorial Time:</label>
+            <label>Tutorial Time</label>
             <input
               type="text"
               name="tutorialTime"
@@ -162,7 +194,7 @@ const AddModule = () => {
           <div className="form-group">
             <label>Tutorial Location</label>
             <input
-              type="email"
+              type="text"
               name="tutorialLocation"
               value={modules.tutorialLocation}
               onChange={handleChange}
@@ -172,7 +204,11 @@ const AddModule = () => {
             <button type="button" onClick={handleSave} className="save-button">
               Save
             </button>
-            <button type="button" onClick={handleCancel} className="cancel-button">
+            <button
+              type="button"
+              onClick={handleCancel}
+              className="cancel-button"
+            >
               Cancel
             </button>
           </div>
