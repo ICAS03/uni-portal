@@ -38,12 +38,13 @@ const CourseMenuContentItem = ({ title, content, icon, mini_title }) => {
               </div>
             </button>
           ))}
-          {item === "Tutorial" && userRole === "lecturer" && (
+          {title === "Tutorial" && userRole === "lecturer" && (
             <button className="menu-button" onClick={handleClick}>
               Add Tutorials
             </button>
           )}
         </>
+      )}
     </div>
   );
  };
