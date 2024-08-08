@@ -1,8 +1,18 @@
+#root{
+    height: 100vh;
+}
+
 .course-menu-content-body{
-    margin: 16px;
+    padding: 16px;
+    display: flex;
     flex: 1;
     height: 100%;
-    overflow: hidden;
+    flex-flow: column nowrap;
+    gap: 16px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow: scroll;
+    align-items: center;
 }
 
 ul{

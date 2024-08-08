@@ -1,10 +1,11 @@
-//import React from 'react'
 import "./courseMenuContentItem.css";
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../../utils/AuthContext';
+import dropDownIcon from '../../../assets/icons/drop_down_black.png'; 
 
-const CourseMenuContent = ({menutitle , menulist}) => {
+const CourseMenuContentItem = ({ title, content, icon, mini_title }) => {
+  const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
   const { userRole } = useAuth();
 
@@ -12,23 +13,39 @@ const CourseMenuContent = ({menutitle , menulist}) => {
     navigate('/lecturer-upload-tutorial'); // Replace with the desired path
   };
 
+  const toggleCard = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div>
-      <li className="menu-title">{menutitle}</li>
-      <ul>
-      {menulist.map((item, index) => (
-          <li key={index} className="f-li">
-            {item}
-          </li>
-        ))}
-      </ul>
-      {menutitle === "Tutorial" && userRole === "lecturer" && (
-        <button className="menu-button" onClick={handleClick}>
-         Add Tutorials
-        </button>
-      )}
+    <div className="collapsible-card">
+      <div className="header" onClick={toggleCard}>
+        <span>{title}</span>
+        <img 
+          src={dropDownIcon} 
+          alt="Dropdown Icon" 
+          className={`arrow ${isOpen ? 'open' : ''}`} 
+        />
+      </div>
+      {isOpen && (
+        <>
+          {content.map((item, index) => (
+            <button key={index} className="content-item">
+              <img src={icon[index]} alt={mini_title[index]} className="content-icon" />
+              <div className="content-titles">
+                <span className="content-mini-title">{mini_title[index]}</span>
+                <span className="content-title">{item}</span>
+              </div>
+            </button>
+          ))}
+          {item === "Tutorial" && userRole === "lecturer" && (
+            <button className="menu-button" onClick={handleClick}>
+              Add Tutorials
+            </button>
+          )}
+        </>
     </div>
   );
-};
+ };
 
-export default CourseMenuContent;
+export default CourseMenuContentItem;

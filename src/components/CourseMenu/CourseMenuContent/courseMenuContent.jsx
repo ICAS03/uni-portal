@@ -1,33 +1,54 @@
 //import React from "react";
 import "./courseMenuContent.css";
 import CourseMenuContentItem from "./courseMenuContentItem";
+import speechBubble from "../../../assets/icons/speech-bubble.png";
+import Announcement from "../../../assets/icons/announcement.png";
+import Book from "../../../assets/icons/book.png";
+
 
 const CourseMenuContent = () => {
   return (
     <>
       <div className="course-menu-content-body">
-        <ul>
-        <CourseMenuContentItem
-            menutitle="General"
-            menulist={["Course Overview", "Course Syllabus", "Course Schedule"]}
+        
+          <CourseMenuContentItem
+            title="General" 
+            content={['Announcement', 'Books']} 
+            icon = {[Announcement, Book]}
+            mini_title = {['Blog', 'Blog']}
           />
           <CourseMenuContentItem
-            menutitle="Lecture"
-            menulist={["Introduction", "Lecture Notes", "Assignments"]}
+            title="Introduction" 
+            content={['Module Information', 'Weekly Plan', 'Course Briefing']} 
+            icon = {[Book, Book, Book]}
+            mini_title = {['File','File', 'File']}
           />
           <CourseMenuContentItem
-            menutitle="Tutorial"
-            menulist={["Tutorial 1" , "Tutorial 2" , "Tutorial 3"]}
+            title="Lectures" 
+            content={[
+              'Introduction to Software Engineering',
+              'Software Tools and Environments',
+              'Agile Software Development',
+              'Software Quality Reliability'
+            ]} 
+            icon = {[Book, Book, Book, Book]}
+            mini_title = {['File','File', 'File', 'File']}a
           />
           <CourseMenuContentItem
-            menutitle="Assignment"
-            menulist={["Project Work", "Group Discussions", "Exams"]}
+            title="Tutorial" 
+            content={[
+              'W1: Introduction to Software Engineering',
+              'W2: Software Tools and Environments',
+              'W3: Agile Software Development',
+              'W4: Software Quality Reliability'
+            ]} 
+            icon = {[Book, Book, Book, Book]}
+            mini_title = {['File','File', 'File', 'File']}a
           />
-      
-        </ul>
       </div>
     </>
   );
 };
 
 export default CourseMenuContent;
+

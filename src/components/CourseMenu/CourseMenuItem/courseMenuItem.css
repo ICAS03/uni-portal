@@ -1,13 +1,50 @@
-p {
-    margin-left: 10px;
-    margin-top: 10px;
-}
+.collapsible-card {
+    width: 100%;
+    overflow: hidden;
 
-.title {
-    font-size: larger;
-    font-weight: inter-bold;
+  }
+  
+  .header {
     background-color: #BBE1EF;
-    border-radius: 15px;
+    border-radius: 10px;
     padding: 10px;
-    text-align: left;
-}
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  
+  .header span {
+    font-size: larger;
+    font-weight: bolder;
+  }
+  
+  .arrow {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+  }
+  
+  .arrow.open {
+    transform: rotate(180deg);
+  }
+  
+
+  .content {
+    padding: 10px 10px 0px 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    font-size: large;
+  }
+  
+  .content button {
+    margin: 5px 0;
+    padding: 10px;
+    cursor: pointer;
+    align-self: start;
+  }
+  
+  .content button:hover {
+    background-color: #e0e0e0;
+  }
+  
