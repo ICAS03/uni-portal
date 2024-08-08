@@ -3,6 +3,8 @@ import "./courseMenu.css";
 import Navbar from "../Navbar/navbar";
 import CourseMenuItem from "./CourseMenuItem/courseMenuItem";
 import CourseMenuContent from "./CourseMenuContent/courseMenuContent";
+import AiChatbot from '../AiChatbot/aiChatbot';
+
 
 const CourseMenu = () => {
   return (
@@ -39,7 +41,9 @@ const CourseMenu = () => {
             <CourseMenuContent />
           </div>
         </div>
-        <div className="ai-div">For AI bot</div>
+        <div className="ai-div">
+          <AiChatbot />
+        </div>
       </div>
     </>
   );
