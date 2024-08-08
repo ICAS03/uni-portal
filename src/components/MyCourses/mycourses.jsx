@@ -54,9 +54,14 @@ const db = getFirestore();
         </div>
         <div className="modules">
         {modules.map((module) => (
-         <Link to="/coursemenu" className='nav-links'>
-          <ModuleCard key={module.id} module={module} />
-          </Link>
+              <Link 
+              key={module.id} 
+              to="/coursemenu" 
+              state={{ module }} // Pass the module data via state
+              className='nav-links'
+            >
+              <ModuleCard module={module} />
+              </Link>
         ))}
         </div>
         <AnalysisCard title="Weekly Performance Analysis">

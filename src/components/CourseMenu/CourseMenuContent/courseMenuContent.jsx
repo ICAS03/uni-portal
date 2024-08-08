@@ -1,13 +1,42 @@
-//import React from "react";
+import React, { useEffect, useState } from 'react';
 import "./courseMenuContent.css";
 import CourseMenuContentItem from "./courseMenuContentItem";
 import speechBubble from "../../../assets/icons/speech-bubble.png";
 import Announcement from "../../../assets/icons/announcement.png";
 import Book from "../../../assets/icons/book.png";
+import { doc, collection, getDocs ,getFirestore} from 'firebase/firestore';
+import { db } from '../../../utils/firebase';
+import { getAuth } from 'firebase/auth';
 
 
 const CourseMenuContent = ({module}) => {
+  const [tutorials, setTutorials] = useState([]);
+  const auth = getAuth();
+const db = getFirestore();
+
+  useEffect(()=> {
+        const fetchTutorials = async () => {
+      try {
+        const studentId = auth.currentUser.uid;
+        const moduleDocRef = doc(db, `students/${studentId}/modules/${module.id}`);
+        const tutorialsCollectionRef = collection(moduleDocRef, "tutorials");
+        const tutorialSnapshots = await getDocs(tutorialsCollectionRef);
+
+        const tutorialsData = tutorialSnapshots.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setTutorials(tutorialsData);
+      } catch (error) {
+        console.error("Error fetching tutorials: ", error);
+      }
+    };
+
+    fetchTutorials();
+  } ,[module.id])
+
   return (
+
     <>
       <div className="course-menu-content-body">
         
@@ -37,18 +66,13 @@ const CourseMenuContent = ({module}) => {
             icon = {[Book, Book, Book, Book]}
             mini_title = {['File','File', 'File', 'File']}a
           />
-          <CourseMenuContentItem
-          module = {module}
-            title="Tutorial" 
-            content={[
-              'W1: Introduction to Software Engineering',
-              'W2: Software Tools and Environments',
-              'W3: Agile Software Development',
-              'W4: Software Quality Reliability'
-            ]} 
-            icon = {[Book, Book, Book, Book]}
-            mini_title = {['File','File', 'File', 'File']}a
-          />
+         <CourseMenuContentItem
+          module={module}
+          title="Tutorial" 
+          content={tutorials.map(tutorial => ({id : tutorial.id , name: tutorial.tutorialName}))}
+          icon={tutorials.map(() => Book)}
+          mini_title={tutorials.map(() => 'File')}
+        />
       </div>
     </>
   );
