@@ -51,4 +51,78 @@
     width: 100%;
   }
 
+  .question-card {
+    width: 100%;
+    height: 800px;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+    padding : 12px
   
+}
+
+.question-questions {
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.question-answer-div {
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.tutorial-question {
+  width: 100%;
+  height: 615px;
+  background-color: #DFDFDF;
+  border-radius: 10px;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 15px;
+  font-size: 18px;
+  
+}
+
+.question-header {
+  margin-top: 16px;
+  text-align: left;
+}
+
+.addQuestionButton{
+  border:1px solid rgb(255, 255, 255);
+  padding:12px 12px;
+  background-color: rgb(255, 255, 255);
+  font-weight: bold;
+  transition-duration:0.4s;
+  cursor:pointer;
+  width: 97%;
+  height: 20%;
+  text-align: left;
+  font-size: 18px;
+  margin-left: 5px;
+  margin-top: -5px;
+}
+
+.addQuestionButton:hover{
+  background-color: rgb(212, 212, 212);
+}
+
+.questionss{
+margin-right: 30px;
+}
+
+.submitTutorialBtn{
+  margin-bottom: 10px;
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: 1px solid black;
+  border-radius: 3px;
+  color: black;
+  cursor: pointer;
+}
+
+.submitTutorialBtn:hover {
+  background-color:rgb(30, 162, 50);
+}
