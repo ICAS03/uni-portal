@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
-import './courseMenuContentItem.css'; 
+import "./courseMenuContentItem.css";
+import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useAuth } from '../../../utils/AuthContext';
 import dropDownIcon from '../../../assets/icons/drop_down_black.png'; 
 
 const CourseMenuContentItem = ({ title, content, icon, mini_title }) => {
   const [isOpen, setIsOpen] = useState(true);
+  const navigate = useNavigate();
+  const { userRole } = useAuth();
+
+  const handleClick = () => {
+    navigate('/lecturer-upload-tutorial'); // Replace with the desired path
+  };
 
   const toggleCard = () => {
     setIsOpen(!isOpen);
@@ -30,10 +38,14 @@ const CourseMenuContentItem = ({ title, content, icon, mini_title }) => {
               </div>
             </button>
           ))}
+          {item === "Tutorial" && userRole === "lecturer" && (
+            <button className="menu-button" onClick={handleClick}>
+              Add Tutorials
+            </button>
+          )}
         </>
-      )}
     </div>
   );
-}
+ };
 
 export default CourseMenuContentItem;

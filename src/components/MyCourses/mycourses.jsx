@@ -37,6 +37,7 @@ const MyCourses = () => {
           <WeeklyAnalysis />
         </AnalysisCard>
       </div>
+      
     </>
   );
 };

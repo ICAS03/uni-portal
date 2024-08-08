@@ -34,7 +34,17 @@ const CourseMenuContent = () => {
             icon = {[Book, Book, Book, Book]}
             mini_title = {['File','File', 'File', 'File']}a
           />
-        
+          <CourseMenuContentItem
+            title="Tutorial" 
+            content={[
+              'W1: Introduction to Software Engineering',
+              'W2: Software Tools and Environments',
+              'W3: Agile Software Development',
+              'W4: Software Quality Reliability'
+            ]} 
+            icon = {[Book, Book, Book, Book]}
+            mini_title = {['File','File', 'File', 'File']}a
+          />
       </div>
     </>
   );

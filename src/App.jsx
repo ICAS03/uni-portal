@@ -25,9 +25,8 @@ import Lecturerdash from './components/MyCourses/lecturerdash'
 
 function App() {
   return (
-    <Router>
       <Routes>
-        <Route path='/' element={<Dashboard/>}></Route>
+        <Route path='/' element={<AdminLogin/>}></Route>
         <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
         <Route path='/mycourses' element={<MyCourses></MyCourses>}></Route>
         <Route path='/tutorial' element={<Tutorial></Tutorial>}></Route>
@@ -46,9 +45,7 @@ function App() {
         <Route path="/addModule" element= {<AddModule />}></Route>
         <Route path="/lecture-upload" element={<LectureUpload />}></Route>
         <Route path="/profilepage" element={<ProfilePage />}></Route>
-        <Route path="/adminLogin" element={<AdminLogin />}></Route>
       </Routes>
-    </Router>
   );
 }
 
