@@ -23,11 +23,12 @@ import LectureUpload from './components/LectureUpload/LectureUpload';
 import ProfilePage from './components/ProfilePage/profilePage';
 import Lecturerdash from './components/MyCourses/lecturerdash'
 import LecturerCourses from './components/MyCourses/lecturercourses';
+import AiChatbot from './components/AiChatbot/aiChatbot';
 
 function App() {
   return (
       <Routes>
-        <Route path='/' element={<AdminLogin/>}></Route>
+        <Route path='/' element={<CourseMenu/>}></Route>
         <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
         <Route path='/mycourses' element={<MyCourses></MyCourses>}></Route>
         <Route path='/tutorial' element={<Tutorial></Tutorial>}></Route>

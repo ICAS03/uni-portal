@@ -1,0 +1,17 @@
+.aiChatbot-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.cs-main-container{
+    padding-top: 10px;
+}
+
+.aiChatbot h2{
+    margin-bottom: 16px;
+}
+.chatbot-box{
+    height: 80vh;
+
+}
