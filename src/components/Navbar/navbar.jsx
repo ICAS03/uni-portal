@@ -7,8 +7,10 @@ import "../Navbar/navbar.css";
 import logo from "../../assets/icons/mortarboard.png";
 import search from "../../assets/icons/search.png";
 import { Link } from "react-router-dom";
+import {useAuth} from '../../utils/AuthContext';
 
 const navbar = () => {
+  const {userRole}= useAuth();
   return (
     <div className="navbar">
       <span className="right-navbar">
@@ -17,12 +19,24 @@ const navbar = () => {
         <Link to="/home" className="nav-links">
           Home
         </Link>
-        <Link to="/dashboard" className="nav-links">
-          Dashboard
-        </Link>
-        <Link to="/mycourses" className="nav-links">
-          My Courses
-        </Link>
+        {userRole && userRole === "lecturer" ? (
+          <Link to="/lecturerdash" className="nav-links">
+            Dashboard
+          </Link>
+        ) : (
+          <Link to="/dashboard" className="nav-links">
+            Dashboard
+          </Link>
+        )}
+        {userRole && userRole === "lecturer" ? (
+          <Link to="/lecturercourses" className="nav-links">
+            My Courses
+          </Link>
+        ) : (
+          <Link to="/mycourses" className="nav-links">
+            My Courses
+          </Link>
+        )}
       </span>
 
       <span className="left-navbar">

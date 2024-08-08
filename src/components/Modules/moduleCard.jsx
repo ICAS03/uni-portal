@@ -6,13 +6,13 @@ import location from "../../assets/icons/location.png";
 import "../Modules/moduleCard.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 
-const moduleCard = () => {
+const moduleCard = ({module}) => {
   return (
     <div className="module-card">
       <div className="module-card-body">
-        <h3 className="module-card-title">Software Engineering</h3>
+        <h3 className="module-card-title">{module.name}</h3>
         <h5 className="module-card-subtitle mb-2 text-body-secondary">
-          Bachelor&apos;s Degree
+          Bachelors Degree
         </h5>
         <div className="module-card-content">
           <div className="module-card-description">
@@ -24,24 +24,24 @@ const moduleCard = () => {
             <div className="description-item">
               <img src={calendar} alt="" className="module-card-icons"></img>
               <ul className="day">
-                <li>[Lecture] Monday</li>
-                <li>[Tutorial] Wednesday</li>
+                <li>[Lecture] {module.lecture_date}</li>
+                <li>[Tutorial] {module.tutorial_date}</li>
               </ul>
             </div>
 
             <div className="description-item">
               <img src={clock} alt="" className="module-card-icons"></img>
               <ul className="time">
-                <li>[Lecture] 10.30 AM - 12.30 PM </li>
-                <li>[Tutorial] 8.00 AM -12.00 PM</li>
+                <li>[Lecture] {module.lecture_time}</li>
+                <li>[Tutorial] {module.tutorial_time}</li>
               </ul>
             </div>
 
             <div className="description-item">
               <img src={location} alt="" className="module-card-icons"></img>
               <ul className="location">
-                <li>[Lecture] Lecture Theatre 1</li>
-                <li>[Tutorial] Block C, Computer Lab 7</li>
+                <li>[Lecture] {module.lecture_location}</li>
+                <li>[Tutorial] {module.tutorial_location}</li>
               </ul>
             </div>
           </div>
