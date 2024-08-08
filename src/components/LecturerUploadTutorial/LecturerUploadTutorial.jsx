@@ -3,9 +3,13 @@ import Navbar from '../Navbar/navbar';
 import './LecturerUploadTutorial.css';
 import QuestionCard from './LecturerQuestionCard';
 import QuestionList from './LecturerQuestionList';
+import {useLocation} from 'react-router-dom';
 
 
 const LecturerUploadTutorial = () => {
+  const location = useLocation();
+  const { module } = location.state || {}; 
+
 
   return (
     <>
