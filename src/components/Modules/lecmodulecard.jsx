@@ -11,8 +11,8 @@ const Lecmodulecard = ({module}) => {
   return (
     <div className="module-card">
     <div className="module-card-body">
-      <h3 className="module-card-title">{module.name}</h3>
-      <h5 className="module-card-subtitle mb-2 text-body-secondary">Bachelor's Degree</h5>
+      <h3 className="module-card-title">{module.title}</h3>
+      <h5 className="module-card-subtitle mb-2 text-body-secondary">{module.levelOfStudy}</h5>
       <div className='module-card-content'>
       <div className='module-card-description'>
 
@@ -21,24 +21,24 @@ const Lecmodulecard = ({module}) => {
           <div className='description-item'>
                 <img src={calendar} alt="" className='module-card-icons'></img>
                 <ul className='day'>
-                <li>[Lecture] {module.lecture_date}</li>
-                <li>[Tutorial] {module.tutorial_date}</li>
+                <li>[Lecture] {module.lectureDay}</li>
+                <li>[Tutorial] {module.tutorialDay}</li>
             </ul>
           </div>
           
           <div className='description-item'>
             <img src={clock} alt="" className='module-card-icons'></img>
             <ul className='time'> 
-                <li>[Lecture] {module.lecturer_time}</li>
-                <li>[Tutorial] {module.tutorial_time}</li>
+                <li>[Lecture] {module.lecturerTime}</li>
+                <li>[Tutorial] {module.tutorialTime}</li>
             </ul>
           </div>
 
           <div className='description-item'>
             <img src={location} alt="" className='module-card-icons'></img>
             <ul className='location'>
-                <li>[Lecture] {module.lecturer_location}</li>
-                <li>[Tutorial] {module.tutorial_location}</li>
+                <li>[Lecture] {module.lecturerLocation}</li>
+                <li>[Tutorial] {module.tutorialLocation}</li>
             </ul>
             </div>
           </div>

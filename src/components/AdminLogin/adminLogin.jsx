@@ -38,7 +38,7 @@ const LoginPage = () => {
       await login(email, password);
       if (email.includes('admin')) {
         navigate('/admindash');
-      } else if (email.includes('lecturer')) {
+      } else if (email.includes('lec')) {
         navigate('/lecturerdash');
       } else {
         navigate('/dashboard');

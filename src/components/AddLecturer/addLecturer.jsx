@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import search from "../../assets/icons/search.png";
 import "../AddLecturer/addLecturer.css";
 import { db } from "../../utils/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc ,getFirestore , setDoc ,doc} from "firebase/firestore";
 import { useAuth } from "../../utils/AuthContext";
 
 const AddLecturer = () => {
@@ -45,7 +45,15 @@ const AddLecturer = () => {
 
   const handleSave = async () => {
     try {
-      await addDoc(collection(db, "lecturers"), {
+      // Sign up the user and get the user ID
+      const userCredential = await signup(lecturers.email, lecturers.password);
+      const userId = userCredential.user.uid; // Get the user ID
+
+      // Get a Firestore instance
+      const db = getFirestore();
+
+      // Create or update the document in the "students" collection with the user ID as the document ID
+      await setDoc(doc(db, "lecturers", userId), {
         firstName: lecturers.firstName,
         lastName: lecturers.lastName,
         email: lecturers.email,
@@ -53,6 +61,7 @@ const AddLecturer = () => {
         password: lecturers.password,
       });
 
+      // Clear the form
       setLecturers({
         firstName: "",
         lastName: "",
@@ -61,12 +70,12 @@ const AddLecturer = () => {
         password: "",
       });
 
-      handleConfirmation();
+      handleConfirmation(); // Confirmation alert
     } catch (e) {
       console.error("Error adding document: ", e);
     }
   };
-
+  
   const handleCancel = () => {
     setLecturers({
       firstName: "",

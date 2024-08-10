@@ -11,17 +11,16 @@ import { useAuth } from '../../utils/AuthContext';
 
 const tutorialpage = () => {
   const location = useLocation();
-  const { module , tutorialId } = location.state || {}; 
+  const { module, tutorialId } = location.state || {}; 
   const [tutorial, setTutorial] = useState(null);
-  const {userId} = useAuth();
+  const { userId } = useAuth();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [answers , setAnswers] = useState("");
-
+  const [answers, setAnswers] = useState("");
+  const [completedQuestions, setCompletedQuestions] = useState([]);
 
   useEffect(() => {
     const fetchTutorial = async () => {
       try {
-        // Directly reference the specific tutorial document in the tutorials subcollection
         const tutorialDocRef = doc(db, `students/${userId}/modules/${module.id}/tutorials/${tutorialId}`);
         const tutorialDoc = await getDoc(tutorialDocRef);
 
@@ -36,12 +35,12 @@ const tutorialpage = () => {
     };
 
     fetchTutorial();
-  }, [module, tutorialId]);
+  }, [module, tutorialId, userId]);
 
-  const addAnswers =(event) => {
+  const addAnswers = (event) => {
     event.preventDefault(); 
-    setAnswers(event.target.value)
-  }
+    setAnswers(event.target.value);
+  };
 
   const updateAnswersInFirebase = async (updatedQuestions) => {
     try {
@@ -54,7 +53,6 @@ const tutorialpage = () => {
     }
   };
 
-
   const handleNextQuestion = async (event) => {
     event.preventDefault();
 
@@ -62,7 +60,6 @@ const tutorialpage = () => {
       const updatedQuestions = [...tutorial.questions];
       updatedQuestions[currentQuestionIndex].answers = answers;
 
-      // Update the Firestore document with the new answers
       await updateAnswersInFirebase(updatedQuestions);
 
       setTutorial((prevTutorial) => ({
@@ -70,7 +67,9 @@ const tutorialpage = () => {
         questions: updatedQuestions,
       }));
 
-      setAnswers(""); // Clear the textarea for the next question
+      setCompletedQuestions([...completedQuestions, tutorial.questions[currentQuestionIndex]]); 
+
+      setAnswers(""); 
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }
   };
@@ -78,7 +77,20 @@ const tutorialpage = () => {
   const handlePreviousQuestion = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
-      setAnswers(tutorial.questions[currentQuestionIndex - 1].answers || ""); // Show the previous answer if available
+      setAnswers(tutorial.questions[currentQuestionIndex - 1].answers || "");
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (tutorial) {
+      const updatedQuestions = [...tutorial.questions];
+      updatedQuestions[currentQuestionIndex].answers = answers;
+
+      await updateAnswersInFirebase(updatedQuestions);
+
+      setCompletedQuestions([...completedQuestions, tutorial.questions[currentQuestionIndex]]); // Add the last question to the completed list
+
+      alert('Tutorial submitted successfully!');
     }
   };
 
@@ -109,13 +121,33 @@ const tutorialpage = () => {
      </div>
            </div>  
            <div className='tutorial-navigation'>
-            <a className='previous' onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0}>Previous</a>
-            <a className='next' onClick={handleNextQuestion} disabled={currentQuestionIndex === tutorial?.questions.length - 1}>Next</a>
+           <a 
+              className='previous' 
+              onClick={handlePreviousQuestion} 
+              disabled={currentQuestionIndex === 0}
+            >
+              Previous
+            </a>
+            <a 
+              className='next' 
+              onClick={handleNextQuestion} 
+              disabled={currentQuestionIndex === tutorial?.questions.length - 1}
+            >
+              Next
+            </a>
+            {currentQuestionIndex === tutorial?.questions.length - 1 && (
+              <button 
+                className='submit_tutorial_btn' 
+                onClick={handleSubmit}
+              >
+                Submit
+              </button>
+            )}
            </div>
         </div>
-       <div className='question-checks'>
-         <TutorialList></TutorialList>
-       </div>
+        <div className='question-checks'>
+          <TutorialList completedQuestions={completedQuestions} questions={tutorial?.questions.length}/>
+        </div>
     </div>
     </>
   )
