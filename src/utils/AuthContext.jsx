@@ -15,11 +15,13 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [userRole, setUserRole] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [userId, setUserId] = useState(null); 
 
   useEffect(() => {
     // const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
+      setUserId(user.uid);
       setLoading(false);
     });
 
@@ -67,6 +69,7 @@ export const AuthProvider = ({ children }) => {
     userRole,
     login,
     logout,
+    userId,
     signup,
   };
 

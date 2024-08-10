@@ -20,3 +20,11 @@
     justify-content: center;
     padding: 10px;
 }
+
+.tutorial-answer {
+  width: 942px;
+  height: 615px;
+  background-color: #DFDFDF;
+  border-radius: 10px;
+  
+}

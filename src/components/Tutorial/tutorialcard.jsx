@@ -9,7 +9,7 @@ const tutorialcard = () => {
         Question 1 : What were the biggest challenges you faced during the design and construction of the Willow Creek Community Center, and how did you overcome them? (10m)
         </div>
        <div className='tutorial-answer-div'>
-        <TutorialAnswer></TutorialAnswer>
+       <textarea className="tutorial-answer"  />
         <span className='attachment'>
                 Upload Attachment
              </span>

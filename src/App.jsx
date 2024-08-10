@@ -28,7 +28,7 @@ import AiChatbot from './components/AiChatbot/aiChatbot';
 function App() {
   return (
       <Routes>
-        <Route path='/' element={<CourseMenu/>}></Route>
+        <Route path='/' element={<AdminLogin/>}></Route>
         <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
         <Route path='/mycourses' element={<MyCourses></MyCourses>}></Route>
         <Route path='/tutorial' element={<Tutorial></Tutorial>}></Route>

@@ -10,8 +10,13 @@ const CourseMenuContentItem = ({ title, content, icon, mini_title , module }) =>
   const { userRole } = useAuth();
 
   const handleClick = () => {
+    console.log(module.id);
     navigate('/lecturer-upload-tutorial' , {state : {module}});
   };
+
+  const handleToTutorial = (tutorialId) => {
+    navigate('/tutorial', { state: { module  , tutorialId} });
+  }
 
   const toggleCard = () => {
     setIsOpen(!isOpen);
@@ -30,11 +35,11 @@ const CourseMenuContentItem = ({ title, content, icon, mini_title , module }) =>
       {isOpen && (
         <>
           {content.map((item, index) => (
-            <button key={index} className="content-item">
+            <button key={index} className="content-item"  onClick={() => handleToTutorial(item.id)} >
               <img src={icon[index]} alt={mini_title[index]} className="content-icon" />
               <div className="content-titles">
                 <span className="content-mini-title">{mini_title[index]}</span>
-                <span className="content-title">{item}</span>
+                <span className="content-title">{item.name}</span>
               </div>
             </button>
           ))}
