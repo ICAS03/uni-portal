@@ -22,6 +22,7 @@ const CourseMenuContentItem = ({ title, content, icon, mini_title , module }) =>
     setIsOpen(!isOpen);
   };
 
+
   return (
     <div className="collapsible-card">
       <div className="header" onClick={toggleCard}>
@@ -34,24 +35,30 @@ const CourseMenuContentItem = ({ title, content, icon, mini_title , module }) =>
       </div>
       {isOpen && (
         <>
-          {content.map((item, index) => (
-            <button key={index} className="content-item"  onClick={() => handleToTutorial(item.id)} >
-              <img src={icon[index]} alt={mini_title[index]} className="content-icon" />
-              <div className="content-titles">
-                <span className="content-mini-title">{mini_title[index]}</span>
-                <span className="content-title">{item.name}</span>
-              </div>
-            </button>
+         {content.map((item, index) => (
+            <div key={index} className="content-item-container">
+              <button 
+                className="content-item"  
+                onClick={() => handleToTutorial(item.id)}
+              >
+                <img src={icon[index]} alt={mini_title[index]} className="content-icon" />
+                <div className="content-titles">
+                  <span className="content-mini-title">{mini_title[index]}</span>
+                  <span className="content-title">{item.name}</span>
+                </div>
+                
+              </button>
+            
+            </div>
           ))}
-          {title === "Tutorial" && userRole === "lecturer" && (
+           {title === "Tutorial" && userRole === "lecturer" && (
             <button className="menu-button" onClick={handleClick}>
               Add Tutorials
             </button>
           )}
         </>
       )}
-    </div>
-  );
- };
+        </div>
+      )};
 
 export default CourseMenuContentItem;

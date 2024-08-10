@@ -6,36 +6,36 @@ import WeeklyAnalysis from "../Modules/weeklyAnalysis";
 import AnalysisCard from "../Modules/analysisCard";
 import { Link } from "react-router-dom";
 import { useState , useEffect} from "react";
-import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
+import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
+import { useAuth } from "../../utils/AuthContext";
 
 const MyCourses = () => {
+const {userId} = useAuth();
 const [modules , setModules]= useState([]);
-const auth = getAuth();
 const db = getFirestore();
 
+useEffect(() => {
+  console.log(userId);
+  if (userId !== null) {
+    const modulesCollectionRef = collection(db, `students/${userId}/modules`);
 
-  useEffect(()=> {
-    const fetchModules = async () => {
-      try {
-        const studentId = auth.currentUser.uid;
-        const modulesCollectionRef = collection(db , `students/${studentId}/modules`);
-        const modulesSnapShot = await getDocs(modulesCollectionRef);
-  
-        const moduleList = modulesSnapShot.docs.map(doc => ({
-          id : doc.id,
-          ...doc.data(),
-        }));
+    const unsubscribe = onSnapshot(modulesCollectionRef, (snapshot) => {
+      const moduleList = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
       
-      
-      setModules(moduleList);
-        } catch (error) {
-          console.error('Error fetching modules: ', error);
-        }
-      };
-  
-      fetchModules();
-  }, [auth , db]);
+      console.log('Fetched Modules:', moduleList); // Log the fetched data here
+      setModules(moduleList); // Update state after logging the fetched data
+    }, (error) => {
+      console.error('Error fetching modules: ', error);
+    });
+
+    return () => unsubscribe();
+  } else {
+    console.log('User not logged in');
+  }
+}, [userId, db]);
 
   return (
     <>
@@ -53,16 +53,19 @@ const db = getFirestore();
           </span>
         </div>
         <div className="modules">
-        {modules.map((module) => (
-              <Link 
-              key={module.id} 
-              to="/coursemenu" 
-              state={{ module }} // Pass the module data via state
-              className='nav-links'
-            >
-              <ModuleCard module={module} />
-              </Link>
-        ))}
+        {modules.map((module) => {
+  console.log('Module:', module);  
+  return (
+    <Link 
+      key={module.id} 
+      to="/coursemenu" 
+      state={{ module }} 
+      className='nav-links'
+    >
+      <ModuleCard module={module} />
+    </Link>
+  );
+})}
         </div>
         <AnalysisCard title="Weekly Performance Analysis">
           <WeeklyAnalysis />

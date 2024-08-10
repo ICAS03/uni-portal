@@ -10,38 +10,38 @@ const moduleCard = ({module}) => {
   return (
     <div className="module-card">
       <div className="module-card-body">
-        <h3 className="module-card-title">{module.name}</h3>
+        <h3 className="module-card-title">{module.title}</h3>
         <h5 className="module-card-subtitle mb-2 text-body-secondary">
-          Bachelors Degree
+          {module.levelOfStudy}
         </h5>
         <div className="module-card-content">
           <div className="module-card-description">
             <div className="description-item">
               <img src={prof} alt="" className="module-card-icons"></img>
-              <ul>Prof</ul>
+              <ul>{module.professor}</ul>
             </div>
 
             <div className="description-item">
               <img src={calendar} alt="" className="module-card-icons"></img>
               <ul className="day">
-                <li>[Lecture] {module.lecture_date}</li>
-                <li>[Tutorial] {module.tutorial_date}</li>
+                <li>[Lecture] {module.lectureDay}</li>
+                <li>[Tutorial] {module.tutorialDay}</li>
               </ul>
             </div>
 
             <div className="description-item">
               <img src={clock} alt="" className="module-card-icons"></img>
               <ul className="time">
-                <li>[Lecture] {module.lecture_time}</li>
-                <li>[Tutorial] {module.tutorial_time}</li>
+                <li>[Lecture] {module.lectureTime}</li>
+                <li>[Tutorial] {module.tutorialTime}</li>
               </ul>
             </div>
 
             <div className="description-item">
               <img src={location} alt="" className="module-card-icons"></img>
               <ul className="location">
-                <li>[Lecture] {module.lecture_location}</li>
-                <li>[Tutorial] {module.tutorial_location}</li>
+                <li>[Lecture] {module.lectureLocation}</li>
+                <li>[Tutorial] {module.tutorialLocation}</li>
               </ul>
             </div>
           </div>

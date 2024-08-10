@@ -77,5 +77,14 @@ width: 942px;
 height: 615px;
 background-color: #DFDFDF;
 border-radius: 10px;
+}
 
+.submit_tutorial_btn {
+  font-size: 16px;
+  font-weight: bold;  
+}
+
+.submit_tutorial_btn:hover {
+  cursor: pointer;
+  color: green;
 }

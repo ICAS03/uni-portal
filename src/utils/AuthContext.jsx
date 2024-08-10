@@ -35,9 +35,9 @@ export const AuthProvider = ({ children }) => {
 
         if (user.email.includes("admin")) {
           setUserRole("admin");
-        } else if (user.email.includes("lecturer")) {
+        } else if (user.email.includes("lec")) {
           setUserRole("lecturer");
-        } else if (user.email.includes("student")) {
+        } else {
           setUserRole("student");
         }
       } else {

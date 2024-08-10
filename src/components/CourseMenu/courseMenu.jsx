@@ -39,7 +39,7 @@ const CourseMenu = () => {
           />
         </div>
         <div className="right-whole-div">
-          <h1 className="course-title">{module.name}</h1>
+          <h1 className="course-title">{module.title}</h1>
           <ul className="selection-list">
             <li>Modules</li>
             <li>Assignments</li>
