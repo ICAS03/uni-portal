@@ -30,6 +30,12 @@ const AddModule = () => {
   };
 
   const handleSave = async () => {
+    const isConfirmed = window.confirm("Are you sure you want to submit?");
+
+    if (!isConfirmed) {
+      return;
+    }
+
     try {
       await addDoc(collection(db, "modules"), {
         title: modules.title,
@@ -43,10 +49,8 @@ const AddModule = () => {
         lectureLocation: modules.lectureLocation,
         tutorialLocation: modules.tutorialLocation,
       });
+      alert("Submitted successfully!");
 
-      alert("Module data saved to Firestore!");
-
-      // Clear the form after saving
       setModules({
         title: "",
         levelOfStudy: "",
@@ -209,7 +213,7 @@ const AddModule = () => {
               onClick={handleCancel}
               className="cancel-button"
             >
-              Cancel
+              Clear
             </button>
           </div>
         </form>

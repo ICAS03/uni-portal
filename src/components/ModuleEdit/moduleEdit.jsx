@@ -4,7 +4,7 @@ import AdminNav from "../AdminNav/adminNav";
 import search from "../../assets/icons/search.png";
 import { Link } from "react-router-dom";
 import { db } from "../../utils/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 
 const ModuleEdit = () => {
   const [modules, setModules] = useState([]);
@@ -18,6 +18,7 @@ const ModuleEdit = () => {
           id: doc.id,
           ...doc.data(),
         }));
+        console.log("Fetched modules:", modulesData);
         setModules(modulesData);
       } catch (error) {
         console.error("Error fetching modules: ", error);
@@ -27,19 +28,33 @@ const ModuleEdit = () => {
     fetchModules();
   }, []);
 
+  const deleteModule = async (id) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this module?"
+    );
+    if (confirmDelete) {
+      try {
+        await deleteDoc(doc(db, "modules", id));
+        setModules(modules.filter((module) => module.id !== id));
+      } catch (error) {
+        console.error("Error deleting module: ", error);
+      }
+    }
+  };
+
   const filteredModules = modules.filter((module) => {
-    const term = searchTerm;
+    const term = searchTerm.toLowerCase();
     return (
-      module.title.includes(term) ||
-      module.levelOfStudy.includes(term) ||
-      module.professor.includes(term) ||
-      module.deadline.includes(term) ||
-      module.lectureDay.includes(term) ||
-      module.tutorialDay.includes(term) ||
-      module.lectureTime.includes(term) ||
-      module.tutorialTime.includes(term) ||
-      module.lectureLocation.includes(term) ||
-      module.tutorialLocation.includes(term)
+      module.title.toLowerCase().includes(term) ||
+      module.levelOfStudy.toLowerCase().includes(term) ||
+      module.professor.toLowerCase().includes(term) ||
+      module.deadline.toLowerCase().includes(term) ||
+      module.lectureDay.toLowerCase().includes(term) ||
+      module.tutorialDay.toLowerCase().includes(term) ||
+      module.lectureTime.toLowerCase().includes(term) ||
+      module.tutorialTime.toLowerCase().includes(term) ||
+      module.lectureLocation.toLowerCase().includes(term) ||
+      module.tutorialLocation.toLowerCase().includes(term)
     );
   });
 
@@ -113,6 +128,12 @@ const ModuleEdit = () => {
                     </p>
                   </div>
                 </div>
+                <button
+                  className="delete-button"
+                  onClick={() => deleteModule(module.id)}
+                >
+                  Delete
+                </button>
               </div>
             ))}
           </div>

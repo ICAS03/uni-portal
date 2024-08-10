@@ -37,9 +37,9 @@ const AddStudent = () => {
       console.log(student.email, student.password);
       await signup(student.email, student.password);
 
-      alert("Authentication updated successfully!");
+      alert("Submitted successfully!");
     } catch (e) {
-      console.error("Error updating authentication: ", e);
+      console.error("Error updating: ", e);
     }
   };
 
@@ -52,9 +52,7 @@ const AddStudent = () => {
         phoneNumber: student.phoneNumber,
         password: student.password,
       });
-      alert("Student data saved to Firestore!");
 
-      // Clear the form after saving
       setStudent({
         firstName: "",
         lastName: "",
@@ -164,7 +162,7 @@ const AddStudent = () => {
               onClick={handleCancel}
               className="cancel-button"
             >
-              Cancel
+              Clear
             </button>
           </div>
         </form>
