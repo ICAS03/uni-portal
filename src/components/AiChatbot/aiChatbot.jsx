@@ -54,7 +54,7 @@ function aiChatbot() {
                 parts: [{
                     text: `
                             Context: 
-                            As a website assistant,  
+                            As a friendly and helpful website assistant,  
                             you are required to answer questions from users, 
                             and provide information about the website.
                             Your answer should be clear and concise with a limitation of one to three sentance per answer. 

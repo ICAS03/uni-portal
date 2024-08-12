@@ -10,10 +10,12 @@ const dashboard = () => {
     <>
     <Navbar></Navbar>
      <h1>Welcome Back!</h1>
-        <DashboardCard module="Software Engineering" color="blue"/>
-    <DashboardCard module="System Architecture" color="purple"/>
-    <DashboardCard module="Database Structure" color="yellow"/>
-    <RadialBar score={75}/>
+    <div className='module-cards'>
+      <DashboardCard module="Software Engineering" color="blue"/>
+      <DashboardCard module="System Architecture" color="purple"/>
+      <DashboardCard module="Database Structure" color="yellow"/>
+      <RadialBar score={75}/>
+    </div>
     <h1>Deadlines</h1>
     <DashboardCalendar/>
     <h1>Alerts</h1>

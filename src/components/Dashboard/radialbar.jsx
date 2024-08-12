@@ -5,15 +5,18 @@ import './radialbar.css';
 
 const radialbar = (props) => {
   return (
-    <CircularProgressbar
-    className="circle"
-    value={props.score}
-    text={`${props.score}%`}
-    styles={buildStyles({
-        pathColor: props.color,
-        textColor: props.color,
-    })}
-/>
+    <div className='circle-card'>
+      <h3>Overall Progress</h3>
+      <CircularProgressbar
+      className="circle"
+      value={props.score}
+      text={`${props.score}%`}
+      styles={buildStyles({
+          pathColor: props.color,
+          textColor: props.color,
+      })}
+      />  
+    </div>  
   )
 }
 
