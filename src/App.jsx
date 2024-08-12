@@ -23,7 +23,7 @@ import LectureUpload from './components/LectureUpload/LectureUpload';
 import ProfilePage from './components/ProfilePage/profilePage';
 import Lecturerdash from './components/MyCourses/lecturerdash'
 import LecturerCourses from './components/MyCourses/lecturercourses';
-import AiChatbot from './components/AiChatbot/aiChatbot';
+
 
 function App() {
   return (

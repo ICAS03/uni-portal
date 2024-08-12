@@ -19,9 +19,6 @@ const navbar = () => {
       <span className="right-navbar">
         <img src={logo} alt="" className="logo"></img>
 
-        <Link to="/home" className="nav-links">
-          Home
-        </Link>
         {userRole && userRole === "lecturer" ? (
           <Link to="/lecturerdash" className="nav-links">
             Dashboard
@@ -56,7 +53,9 @@ const navbar = () => {
           {/* <img src={robot} alt="" className=""></img> */}
           <img src={bell} alt="" className=""></img>
           <img src={messages} alt="" className=""></img>
-          <img src={user} alt="" className=""></img>
+          <Link to="/profilepage" className="nav-links">
+            <img src={user} alt="" className=""></img>
+          </Link>
         </div>
       </span>
     </div>
