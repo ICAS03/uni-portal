@@ -8,7 +8,7 @@ const dashboardCard = (props) => {
   const progressLineClass = `card-progress-line ${color}`;
   return (
     <div className="dashboard-card">
-    <h2 className="dashboard-card-title">{module}</h2>
+    <h2 className="dashboard-card-title">{module.title}</h2>
     <img className="dashboard-card-button" src={analytics} alt="" href={props.page} />
     <p className="dashboard-card-description">Bachelor Degree</p>
     <div className="dashboard-card-progbar">

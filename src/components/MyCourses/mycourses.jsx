@@ -54,24 +54,23 @@ useEffect(() => {
         </div>
         <div className="modules">
         {modules.map((module) => {
-  console.log('Module:', module);  
-  return (
-    <Link 
-      key={module.id} 
-      to="/coursemenu" 
-      state={{ module }} 
-      className='nav-links'
-    >
-      <ModuleCard module={module} />
-    </Link>
-  );
-})}
+          console.log('Module:', module);  
+          return (
+            <Link 
+              key={module.id} 
+              to="/coursemenu" 
+              state={{ module }} 
+              className='nav-links'
+            >
+              <ModuleCard module={module} />
+            </Link>
+          );
+        })}
         </div>
         <AnalysisCard title="Weekly Performance Analysis">
           <WeeklyAnalysis />
         </AnalysisCard>
       </div>
-      
     </>
   );
 };
