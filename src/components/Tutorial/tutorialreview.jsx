@@ -4,7 +4,7 @@ import '../Tutorial/tutorialreview.css';
 import TutorialList from '../Tutorial/tutoriallist';
 import { doc, getDoc, collection , updateDoc} from 'firebase/firestore';
 import { db } from '../../utils/firebase';
-import {useLocation} from 'react-router-dom';
+import {useLocation , useNavigate} from 'react-router-dom';
 import { useAuth } from '../../utils/AuthContext';
 
 
@@ -16,65 +16,39 @@ const TutorialReview = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState("");
   const [completedQuestions, setCompletedQuestions] = useState([]);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchTutorial = async () => {
+      if (!module || !tutorialId) {
+        console.error("Module or Tutorial ID is undefined.");
+        return;
+      }
 
-        if (!module || !tutorialId) {
-            console.error("Module or Tutorial ID is undefined.");
-            return;
-          }
+      try {
+        const tutorialDocRef = doc(db, `students/${userId}/modules/${module.id}/tutorials/${tutorialId}`);
+        const tutorialDoc = await getDoc(tutorialDocRef);
 
-        try {
-            const tutorialDocRef = doc(db, `students/${userId}/modules/${module.id}/tutorials/${tutorialId}`);
-            const tutorialDoc = await getDoc(tutorialDocRef);
+        if (tutorialDoc.exists()) {
+          const tutorialData = tutorialDoc.data();
+          setTutorial(tutorialData);
 
-            if (tutorialDoc.exists()) {
-            setTutorial(tutorialDoc.data());
-            } else {
-            console.error("No such tutorial! ID: " + tutorialId);
-            }
-        } catch (error) {
-            console.error("Error fetching tutorial: ", error);
+          // Populate completedQuestions with those that have been answered
+          const completed = tutorialData.questions.filter(question => question.answers && question.answers.trim() !== "");
+          setCompletedQuestions(completed);
+        } else {
+          console.error("No such tutorial! ID: " + tutorialId);
         }
+      } catch (error) {
+        console.error("Error fetching tutorial: ", error);
+      }
     };
 
     fetchTutorial();
   }, [module, tutorialId, userId]);
 
-  const addAnswers = (event) => {
-    event.preventDefault(); 
-    setAnswers(event.target.value);
-  };
-
-  const updateAnswersInFirebase = async (updatedQuestions) => {
-    try {
-      const tutorialDocRef = doc(db, `students/${userId}/modules/${module.id}/tutorials/${tutorialId}`);
-      await updateDoc(tutorialDocRef, {
-        questions: updatedQuestions,
-      });
-    } catch (error) {
-      console.error("Error updating answers in Firebase: ", error);
-    }
-  };
-
-  const handleNextQuestion = async (event) => {
-    event.preventDefault();
-
+  const handleNextQuestion = () => {
     if (tutorial && currentQuestionIndex < tutorial.questions.length - 1) {
-      const updatedQuestions = [...tutorial.questions];
-      updatedQuestions[currentQuestionIndex].answers = answers;
-
-      await updateAnswersInFirebase(updatedQuestions);
-
-      setTutorial((prevTutorial) => ({
-        ...prevTutorial,
-        questions: updatedQuestions,
-      }));
-
-      setCompletedQuestions([...completedQuestions, tutorial.questions[currentQuestionIndex]]); 
-
-      setAnswers(""); 
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }
   };
@@ -82,9 +56,14 @@ const TutorialReview = () => {
   const handlePreviousQuestion = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
-      setAnswers(tutorial.questions[currentQuestionIndex - 1].answers || "");
     }
   };
+
+  const handleEndReview = () => {
+    alert('Tutorial review ended successfully!');
+    navigate('/dashboard');  // Replace '/desired-page' with your target route
+  };
+
 
   return (
     <>
@@ -105,7 +84,7 @@ const TutorialReview = () => {
                   </div>
                 )}
             <div className='tutorial-answer-div'>
-                {answers}
+            <p>{tutorial?.questions[currentQuestionIndex].answers || "No answer submitted."}</p>
               {/* <textarea className="tutorial-answer" value={answers} onChange={addAnswers}  /> */}
             </div>
           </div>
@@ -126,12 +105,13 @@ const TutorialReview = () => {
             Next
           </a>
           {currentQuestionIndex === tutorial?.questions.length - 1 && (
-            <button 
-              className='submit_tutorial_btn' 
-            >
-              End Review
-            </button>
-          )}
+              <button 
+                className='submit_tutorial_btn' 
+                onClick={handleEndReview}  // Call the handleEndReview function here
+              >
+                End Review
+              </button>
+            )}
         </div>
       </div>
       <div className='question-checks'>
