@@ -60,5 +60,13 @@
   }
   .circle{
     display: inline-flex;
-    margin-left: 150px;
+    margin-top: 10px;
+  }
+
+  .circle-card{
+    display: flex;
+    width: 332px;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px ;
   }

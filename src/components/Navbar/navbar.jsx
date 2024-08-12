@@ -8,6 +8,9 @@ import logo from "../../assets/icons/mortarboard.png";
 import search from "../../assets/icons/search.png";
 import { Link } from "react-router-dom";
 import {useAuth} from '../../utils/AuthContext';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import AiChatbot from "../AiChatbot/aiChatbot";
 
 const navbar = () => {
   const {userRole}= useAuth();
@@ -45,7 +48,12 @@ const navbar = () => {
           <img src={search} alt=""></img>
         </div>
         <div className="icons">
-          <img src={robot} alt="" className=""></img>
+          <Popup trigger={<img src={robot} alt="" className=""></img>} position="bottom center">
+            <div className="pop-up-ai">
+              <AiChatbot />
+            </div>
+          </Popup>
+          {/* <img src={robot} alt="" className=""></img> */}
           <img src={bell} alt="" className=""></img>
           <img src={messages} alt="" className=""></img>
           <img src={user} alt="" className=""></img>
