@@ -23,6 +23,7 @@ import LectureUpload from './components/LectureUpload/LectureUpload';
 import ProfilePage from './components/ProfilePage/profilePage';
 import Lecturerdash from './components/MyCourses/lecturerdash'
 import LecturerCourses from './components/MyCourses/lecturercourses';
+import TutorialReview from './components/Tutorial/tutorialreview';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
         <Route path='/mycourses' element={<MyCourses></MyCourses>}></Route>
         <Route path='/tutorial' element={<Tutorial></Tutorial>}></Route>
+        <Route path='/tutorialreview' element={<TutorialReview/>}></Route>
         <Route path='/modulestat' element={<ModuleStat/>}></Route>
         <Route path='/lecturer-upload-tutorial' element={<LecturerUploadTutorial/>}></Route>
         <Route path='/coursemenu' element={<CourseMenu/>}></Route>

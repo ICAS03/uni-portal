@@ -1,14 +1,14 @@
 import React , {useState , useEffect} from 'react'
 import Navbar from '../Navbar/navbar';
-import '../Tutorial/tutorialpage.css';
+import '../Tutorial/tutorialreview.css';
 import TutorialList from '../Tutorial/tutoriallist';
 import { doc, getDoc, collection , updateDoc} from 'firebase/firestore';
 import { db } from '../../utils/firebase';
-import {useLocation, useNavigate} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 import { useAuth } from '../../utils/AuthContext';
 
 
-const tutorialpage = () => {
+const TutorialReview = () => {
   const location = useLocation();
   const { module, tutorialId } = location.state || {}; 
   const [tutorial, setTutorial] = useState(null);
@@ -16,23 +16,27 @@ const tutorialpage = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState("");
   const [completedQuestions, setCompletedQuestions] = useState([]);
-  const navigate = useNavigate();
-
 
   useEffect(() => {
     const fetchTutorial = async () => {
-      try {
-        const tutorialDocRef = doc(db, `students/${userId}/modules/${module.id}/tutorials/${tutorialId}`);
-        const tutorialDoc = await getDoc(tutorialDocRef);
 
-        if (tutorialDoc.exists()) {
-          setTutorial(tutorialDoc.data());
-        } else {
-          console.error("No such tutorial! ID: " + tutorialId);
+        if (!module || !tutorialId) {
+            console.error("Module or Tutorial ID is undefined.");
+            return;
+          }
+
+        try {
+            const tutorialDocRef = doc(db, `students/${userId}/modules/${module.id}/tutorials/${tutorialId}`);
+            const tutorialDoc = await getDoc(tutorialDocRef);
+
+            if (tutorialDoc.exists()) {
+            setTutorial(tutorialDoc.data());
+            } else {
+            console.error("No such tutorial! ID: " + tutorialId);
+            }
+        } catch (error) {
+            console.error("Error fetching tutorial: ", error);
         }
-      } catch (error) {
-        console.error("Error fetching tutorial: ", error);
-      }
     };
 
     fetchTutorial();
@@ -82,23 +86,6 @@ const tutorialpage = () => {
     }
   };
 
-  const handleSubmit = async () => {
-    if (tutorial) {
-      const updatedQuestions = [...tutorial.questions];
-      updatedQuestions[currentQuestionIndex].answers = answers;
-
-      await updateAnswersInFirebase(updatedQuestions);
-
-      setCompletedQuestions([...completedQuestions, tutorial.questions[currentQuestionIndex]]); // Add the last question to the completed list
-
-      alert('Tutorial submitted successfully!');
-
-      navigate('/tutorialreview', {
-        state: { module, tutorialId }  // Pass the module and tutorialId as state
-      });
-    }
-  };
-
   return (
     <>
     <Navbar></Navbar>
@@ -118,10 +105,8 @@ const tutorialpage = () => {
                   </div>
                 )}
             <div className='tutorial-answer-div'>
-              <textarea className="tutorial-answer" value={answers} onChange={addAnswers}  />
-              <p className='attachment'>
-                  Upload Attachment
-              </p>
+                {answers}
+              {/* <textarea className="tutorial-answer" value={answers} onChange={addAnswers}  /> */}
             </div>
           </div>
         </div>  
@@ -143,9 +128,8 @@ const tutorialpage = () => {
           {currentQuestionIndex === tutorial?.questions.length - 1 && (
             <button 
               className='submit_tutorial_btn' 
-              onClick={handleSubmit}
             >
-              Submit
+              End Review
             </button>
           )}
         </div>
@@ -156,6 +140,6 @@ const tutorialpage = () => {
     </div>
     </>
   )
-}
+};
 
-export default tutorialpage
+export default TutorialReview;

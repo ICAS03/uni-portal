@@ -1,0 +1,115 @@
+.tutorial-body {
+    display: flex; 
+    padding: 16px;
+    justify-content: space-between;
+    overflow: auto;
+  }
+  
+  .tutorial-content {
+    width: 100%;
+    padding: 16px; 
+  }
+  
+  .question-checks {
+    padding: 16px; 
+    background-color: #f9f9f9; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    width: 100%;
+  }
+  
+  .tutorial-title {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    justify-content: space-between;
+  }
+  
+  .tutorial-instruction {
+    display: flex;
+    align-items: center;
+    color: #E46F6F;
+    padding: 10px;
+    justify-content: space-between;
+  }
+  
+  .tutorial-question-card{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .tutorial-navigation {
+    display: flex;
+    justify-content: space-between; 
+    padding: 16px;
+  }
+  
+  .previous, .next {
+    cursor: pointer; 
+    color: #121212; 
+    text-decoration: none; 
+    font-weight: bold; 
+    font-size: 1.5vw;
+  }
+  
+  .previous:hover, .next:hover {
+    text-decoration: underline; 
+  }
+  
+  .tutorial-card {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding : 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .tutorial-questions {
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  }
+  
+  .tutorial-answer-div {
+    align-self: center;
+    padding: 10px;
+  }
+  
+  .tutorial-answer {
+  width: 100%;
+  height: 70%;
+  background-color: #DFDFDF;
+  border-radius: 10px;
+  overflow: scroll;
+  }
+  
+  .submit_tutorial_btn {
+    font-size: 1.5vw;
+    font-weight: bold;  
+  }
+  
+  .submit_tutorial_btn:hover {
+    cursor: pointer;
+    color: green;
+  }
+  
+  
+  @media(min-width: 768px) {
+    .tutorial-content {
+      width: 75%;
+    }
+  
+    .question-checks {
+      width: 25%;
+      margin-top: 0;
+    }
+  }
+  
