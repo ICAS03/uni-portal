@@ -1,14 +1,14 @@
 import React , {useState , useEffect} from 'react'
 import Navbar from '../Navbar/navbar';
-import '../Tutorial/tutorialpage.css';
+import '../Tutorial/tutorialreview.css';
 import TutorialList from '../Tutorial/tutoriallist';
 import { doc, getDoc, collection , updateDoc} from 'firebase/firestore';
 import { db } from '../../utils/firebase';
-import {useLocation, useNavigate} from 'react-router-dom';
+import {useLocation , useNavigate} from 'react-router-dom';
 import { useAuth } from '../../utils/AuthContext';
 
 
-const tutorialpage = () => {
+const TutorialReview = () => {
   const location = useLocation();
   const { module, tutorialId } = location.state || {}; 
   const [tutorial, setTutorial] = useState(null);
@@ -16,17 +16,26 @@ const tutorialpage = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState("");
   const [completedQuestions, setCompletedQuestions] = useState([]);
-  const navigate = useNavigate();
-
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchTutorial = async () => {
+      if (!module || !tutorialId) {
+        console.error("Module or Tutorial ID is undefined.");
+        return;
+      }
+
       try {
         const tutorialDocRef = doc(db, `students/${userId}/modules/${module.id}/tutorials/${tutorialId}`);
         const tutorialDoc = await getDoc(tutorialDocRef);
 
         if (tutorialDoc.exists()) {
-          setTutorial(tutorialDoc.data());
+          const tutorialData = tutorialDoc.data();
+          setTutorial(tutorialData);
+
+          // Populate completedQuestions with those that have been answered
+          const completed = tutorialData.questions.filter(question => question.answers && question.answers.trim() !== "");
+          setCompletedQuestions(completed);
         } else {
           console.error("No such tutorial! ID: " + tutorialId);
         }
@@ -38,39 +47,8 @@ const tutorialpage = () => {
     fetchTutorial();
   }, [module, tutorialId, userId]);
 
-  const addAnswers = (event) => {
-    event.preventDefault(); 
-    setAnswers(event.target.value);
-  };
-
-  const updateAnswersInFirebase = async (updatedQuestions) => {
-    try {
-      const tutorialDocRef = doc(db, `students/${userId}/modules/${module.id}/tutorials/${tutorialId}`);
-      await updateDoc(tutorialDocRef, {
-        questions: updatedQuestions,
-      });
-    } catch (error) {
-      console.error("Error updating answers in Firebase: ", error);
-    }
-  };
-
-  const handleNextQuestion = async (event) => {
-    event.preventDefault();
-
+  const handleNextQuestion = () => {
     if (tutorial && currentQuestionIndex < tutorial.questions.length - 1) {
-      const updatedQuestions = [...tutorial.questions];
-      updatedQuestions[currentQuestionIndex].answers = answers;
-
-      await updateAnswersInFirebase(updatedQuestions);
-
-      setTutorial((prevTutorial) => ({
-        ...prevTutorial,
-        questions: updatedQuestions,
-      }));
-
-      setCompletedQuestions([...completedQuestions, tutorial.questions[currentQuestionIndex]]); 
-
-      setAnswers(""); 
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }
   };
@@ -78,26 +56,14 @@ const tutorialpage = () => {
   const handlePreviousQuestion = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
-      setAnswers(tutorial.questions[currentQuestionIndex - 1].answers || "");
     }
   };
 
-  const handleSubmit = async () => {
-    if (tutorial) {
-      const updatedQuestions = [...tutorial.questions];
-      updatedQuestions[currentQuestionIndex].answers = answers;
-
-      await updateAnswersInFirebase(updatedQuestions);
-
-      setCompletedQuestions([...completedQuestions, tutorial.questions[currentQuestionIndex]]); // Add the last question to the completed list
-
-      alert('Tutorial submitted successfully!');
-
-      navigate('/tutorialreview', {
-        state: { module, tutorialId }  // Pass the module and tutorialId as state
-      });
-    }
+  const handleEndReview = () => {
+    alert('Tutorial review ended successfully!');
+    navigate('/dashboard');  // Replace '/desired-page' with your target route
   };
+
 
   return (
     <>
@@ -118,10 +84,8 @@ const tutorialpage = () => {
                   </div>
                 )}
             <div className='tutorial-answer-div'>
-              <textarea className="tutorial-answer" value={answers} onChange={addAnswers}  />
-              <p className='attachment'>
-                  Upload Attachment
-              </p>
+            <p>{tutorial?.questions[currentQuestionIndex].answers || "No answer submitted."}</p>
+              {/* <textarea className="tutorial-answer" value={answers} onChange={addAnswers}  /> */}
             </div>
           </div>
         </div>  
@@ -141,13 +105,13 @@ const tutorialpage = () => {
             Next
           </a>
           {currentQuestionIndex === tutorial?.questions.length - 1 && (
-            <button 
-              className='submit_tutorial_btn' 
-              onClick={handleSubmit}
-            >
-              Submit
-            </button>
-          )}
+              <button 
+                className='submit_tutorial_btn' 
+                onClick={handleEndReview}  // Call the handleEndReview function here
+              >
+                End Review
+              </button>
+            )}
         </div>
       </div>
       <div className='question-checks'>
@@ -156,6 +120,6 @@ const tutorialpage = () => {
     </div>
     </>
   )
-}
+};
 
-export default tutorialpage
+export default TutorialReview;

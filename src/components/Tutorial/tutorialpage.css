@@ -1,19 +1,24 @@
 .tutorial-body {
   display: flex; 
   padding: 16px;
+  justify-content: space-between;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
 }
 
 .tutorial-content {
-  flex: 3; 
-  padding-right: 16px; 
+  width: 100%;
+  height: 100%;
+  padding: 16px; 
 }
 
 .question-checks {
-  flex: 1; 
   padding: 16px; 
   background-color: #f9f9f9; 
   border: 1px solid #ddd; 
   border-radius: 8px; 
+  width: 100%;
 }
 
 .tutorial-title {
@@ -32,6 +37,14 @@
   justify-content: space-between;
 }
 
+.tutorial-question-card{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-bottom: 10px;
+  height: 70%;
+}
+
 .tutorial-navigation {
   display: flex;
   justify-content: space-between; 
@@ -43,6 +56,7 @@
   color: #121212; 
   text-decoration: none; 
   font-weight: bold; 
+  font-size: 1.5vw;
 }
 
 .previous:hover, .next:hover {
@@ -50,14 +64,16 @@
 }
 
 .tutorial-card {
-  width: 1002px;
-  height: 800px;
+  width: 100%;
+  height: 100%;
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  padding : 12px
-
+  padding : 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .tutorial-questions {
@@ -67,24 +83,37 @@ padding: 10px;
 }
 
 .tutorial-answer-div {
-  align-items: center;
-  justify-content: center;
+  align-self: center;
+  width: 100%;
+  height: 65%;
   padding: 10px;
 }
 
 .tutorial-answer {
-width: 942px;
-height: 615px;
 background-color: #DFDFDF;
 border-radius: 10px;
+overflow: scroll;
 }
 
 .submit_tutorial_btn {
-  font-size: 16px;
+  font-size: 1.5vw;
   font-weight: bold;  
 }
 
 .submit_tutorial_btn:hover {
   cursor: pointer;
   color: green;
+}
+
+
+@media(min-width: 768px) {
+  .tutorial-content {
+    width: 75%;
+    height: 100%;
+  }
+
+  .question-checks {
+    width: 25%;
+    height: 90%;
+  }
 }
