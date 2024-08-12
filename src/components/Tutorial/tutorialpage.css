@@ -19,6 +19,7 @@
   border: 1px solid #ddd; 
   border-radius: 8px; 
   width: 100%;
+  overflow: scroll;
 }
 
 .tutorial-title {
@@ -93,6 +94,7 @@ padding: 10px;
 background-color: #DFDFDF;
 border-radius: 10px;
 overflow: scroll;
+padding: 10px;
 }
 
 .submit_tutorial_btn {
@@ -105,6 +107,9 @@ overflow: scroll;
   color: green;
 }
 
+h4{
+  margin: 10px 30px;
+}
 
 @media(min-width: 768px) {
   .tutorial-content {
